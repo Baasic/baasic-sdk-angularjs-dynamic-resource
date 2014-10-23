@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Baasic.Angular.DynamicResource</id>
+        <version>$version$</version>
+        <title>Baasic Angular Dynamic Resource Module</title>
+        <authors>Kristijan Horvat</authors>
+        <owners>Mono Ltd.</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>AngularJS Dynamic Resource module making calls to the Baasic API easy.</description>
+        <summary />
+        <copyright>Mono Ltd.</copyright>
+        <language>en-US</language>
+        <tags>Javascript, Baasic, AngularJs, Dynamic, JSON</tags>
+		<dependencies>     
+            <dependency id="Baasic.Angular.Core" version="(,2.0)" />                        
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\dist\baasic-angular-dynamic-resource.js" target="content\Scripts\baasic-angular-dynamic-resource.js" />
+		<file src="..\dist\baasic-angular-dynamic-resource.min.js" target="content\Scripts\baasic-angular-dynamic-resource.min.js" />
+    </files>
+</package>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
