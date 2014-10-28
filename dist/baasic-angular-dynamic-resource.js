@@ -7,9 +7,9 @@
         "use strict";
         module.service("baasicDynamicResourceRouteService", ["baasicUriTemplateService", function (uriTemplateService) {
             return {
-                find: uriTemplateService.parse("resource/{resourceName}/{?searchQuery,page,rpp,sort,embed,fields}"),
-                get: uriTemplateService.parse("resource/{resourceName}/{id}/{?embed,fields}"),
-                create: uriTemplateService.parse("resource/{resourceName}"),
+                find: uriTemplateService.parse("resources/{resourceName}/{?searchQuery,page,rpp,sort,embed,fields}"),
+                get: uriTemplateService.parse("resources/{resourceName}/{id}/{?embed,fields}"),
+                create: uriTemplateService.parse("resources/{resourceName}"),
                 parse: uriTemplateService.parse
             };
         }]);
@@ -19,16 +19,19 @@
         module.service("baasicDynamicResourceService", ["baasicApiHttp", "baasicApiService", "baasicConstants", "baasicDynamicResourceRouteService", function (baasicApiHttp, baasicApiService, baasicConstants, dynamicResourceRouteService) {
             return {
                 routeService: dynamicResourceRouteService,
-                find: function (data) {
-                    return baasicApiHttp.get(dynamicResourceRouteService.find.expand(baasicApiService.findParams(data)));
+                find: function (resourceName, options) {
+                    return baasicApiHttp.get(dynamicResourceRouteService.find.expand(baasicApiService.findParams(angular.extend({
+                        resourceName: resourceName
+                    }, options))));
                 },
-                get: function (data) {
-                    return baasicApiHttp.get(dynamicResourceRouteService.get.expand(baasicApiService.getParams(data)));
+                get: function (resourceName, id, options) {
+                    return baasicApiHttp.get(dynamicResourceRouteService.get.expand(baasicApiService.getParams(id, angular.extend({
+                        resourceName: resourceName
+                    }, options))));
                 },
-                create: function (data) {
-                    return baasicApiHttp.post(dynamicResourceRouteService.create.expand({
-                        resourceName: data.resourceName
-                    }), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
+                create: function (resourceName, data) {
+                    var params = baasicApiService.getParams(resourceName, data, 'resourceName');
+                    return baasicApiHttp.post(dynamicResourceRouteService.create.expand(params), baasicApiService.createParams(params)[baasicConstants.modelPropertyName]);
                 },
                 update: function (data) {
                     var params = baasicApiService.updateParams(data);
@@ -51,7 +54,7 @@
             return {
                 find: uriTemplateService.parse("schema/{?searchQuery,page,rpp,sort,embed,fields}"),
                 get: uriTemplateService.parse("schema/{resourceName}/{?embed,fields}"),
-                generateSchema: uriTemplateService.parse("schema/generate"),
+                generate: uriTemplateService.parse("schema/generate"),
                 create: uriTemplateService.parse("schema"),
                 parse: uriTemplateService.parse
             };
@@ -62,11 +65,11 @@
         module.service("baasicDynamicSchemaService", ["baasicApiHttp", "baasicApiService", "baasicConstants", "baasicDynamicSchemaRouteService", function (baasicApiHttp, baasicApiService, baasicConstants, dynamicSchemaRouteService) {
             return {
                 routeService: dynamicSchemaRouteService,
-                find: function (data) {
-                    return baasicApiHttp.get(dynamicSchemaRouteService.find.expand(baasicApiService.findParams(data)));
+                find: function (options) {
+                    return baasicApiHttp.get(dynamicSchemaRouteService.find.expand(baasicApiService.findParams(options)));
                 },
-                get: function (data) {
-                    return baasicApiHttp.get(dynamicSchemaRouteService.get.expand(baasicApiService.getParams(data, 'resourceName')));
+                get: function (resourceName, options) {
+                    return baasicApiHttp.get(dynamicSchemaRouteService.get.expand(baasicApiService.getParams(resourceName, options, 'resourceName')));
                 },
                 create: function (data) {
                     return baasicApiHttp.post(dynamicSchemaRouteService.create.expand({}), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
@@ -79,8 +82,8 @@
                     var params = baasicApiService.removeParams(data);
                     return baasicApiHttp.delete(params[baasicConstants.modelPropertyName].links('delete').href);
                 },
-                generateSchema: function (data) {
-                    return baasicApiHttp.post(dynamicSchemaRouteService.generateSchema.expand({}), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
+                generate: function (data) {
+                    return baasicApiHttp.post(dynamicSchemaRouteService.generate.expand({}), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
                 }
             };
         }]);

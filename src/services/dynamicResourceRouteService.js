@@ -3,9 +3,9 @@
     module.service("baasicDynamicResourceRouteService", ["baasicUriTemplateService",
         function (uriTemplateService) {
             return {
-                find: uriTemplateService.parse("resource/{resourceName}/{?searchQuery,page,rpp,sort,embed,fields}"),
-                get: uriTemplateService.parse("resource/{resourceName}/{id}/{?embed,fields}"),
-                create: uriTemplateService.parse("resource/{resourceName}"),
+                find: uriTemplateService.parse("resources/{resourceName}/{?searchQuery,page,rpp,sort,embed,fields}"),
+                get: uriTemplateService.parse("resources/{resourceName}/{id}/{?embed,fields}"),
+                create: uriTemplateService.parse("resources/{resourceName}"),
                 parse: uriTemplateService.parse
             };
         }]);

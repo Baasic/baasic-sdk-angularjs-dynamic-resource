@@ -5,7 +5,7 @@
             return {
                 find: uriTemplateService.parse("schema/{?searchQuery,page,rpp,sort,embed,fields}"),
                 get: uriTemplateService.parse("schema/{resourceName}/{?embed,fields}"),
-                generateSchema: uriTemplateService.parse("schema/generate"),
+                generate: uriTemplateService.parse("schema/generate"),
                 create: uriTemplateService.parse("schema"),
                 parse: uriTemplateService.parse
             };
