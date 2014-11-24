@@ -10,10 +10,17 @@
                 find: uriTemplateService.parse("resources/{resourceName}/{?searchQuery,page,rpp,sort,embed,fields}"),
                 get: uriTemplateService.parse("resources/{resourceName}/{id}/{?embed,fields}"),
                 create: uriTemplateService.parse("resources/{resourceName}"),
-                parse: uriTemplateService.parse
+                parse: uriTemplateService.parse,
+                permissions: {
+                    get: uriTemplateService.parse("resources/{resourceName}/{id}/permissions/{?fields}"),
+                    update: uriTemplateService.parse("resources/{resourceName}/{id}/permissions/{?fields}"),
+                    deleteByUser: uriTemplateService.parse("resources/{resourceName}/{id}/permissions/actions/{accessAction}/users/{user}/"),
+                    deleteByRole: uriTemplateService.parse("resources/{resourceName}/{id}/permissions/actions/{accessAction}/roles/{role}/")
+                }
             };
         }]);
     }(angular, module));
+
     (function (angular, module, undefined) {
         "use strict";
         module.service("baasicDynamicResourceService", ["baasicApiHttp", "baasicApiService", "baasicConstants", "baasicDynamicResourceRouteService", function (baasicApiHttp, baasicApiService, baasicConstants, dynamicResourceRouteService) {
@@ -44,10 +51,33 @@
                 remove: function (data) {
                     var params = baasicApiService.removeParams(data);
                     return baasicApiHttp.delete(params[baasicConstants.modelPropertyName].links('delete').href);
+                },
+                permissions: {
+                    get: function (options) {
+                        var params = angular.extend({}, options);
+                        return baasicApiHttp.get(dynamicResourceRouteService.permissions.get.expand(params));
+                    },
+                    update: function (options) {
+                        var params = angular.extend({}, options);
+                        return baasicApiHttp.put(dynamicResourceRouteService.permissions.get.expand(params), params[baasicConstants.modelPropertyName]);
+                    },
+                    removeByUser: function (action, user, data) {
+                        var params = baasicApiService.removeParams(data);
+                        params.user = user;
+                        params.accessAction = action;
+                        return baasicApiHttp.delete(dynamicResourceRouteService.permissions.deleteByUser.expand(params));
+                    },
+                    removeByRole: function (action, role, data) {
+                        var params = baasicApiService.removeParams(data);
+                        params.role = role;
+                        params.accessAction = action;
+                        return baasicApiHttp.delete(dynamicResourceRouteService.permissions.deleteByRole.expand(params));
+                    }
                 }
             };
         }]);
     }(angular, module));
+
     (function (angular, module, undefined) {
         "use strict";
         module.service("baasicDynamicSchemaRouteService", ["baasicUriTemplateService", function (uriTemplateService) {
