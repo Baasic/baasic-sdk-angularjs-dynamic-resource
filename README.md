@@ -44,14 +44,20 @@ Baasic Dynamic-Resource Service provides an easy way to consume Baasic Dynamic-R
 * `find` - Finds dynamic-resource items by given criteria
 * `create` - Creates a new dynamic-resource item
 * `update` - Updates a dynamic-resource item
+* `patch` - ??? (TODO)
 * `remove` - Deletes a dynamic-resource item
+* `permissions.*`
+ * `get` - Gets dynamic-resource permissions
+ * `update` - Updates dynamic-resource permissions
+ * `removeByUser` - ??? (TODO)
+ * `removeByRole` - ??? (TODO)
 * `routeService` - Provides direct access to `dynamicResourceRouteService`
 
 Here are a few examples on how to use the `dynamicResourceService`:
 
 ```javascript
 var id = "73a22b5d-e5ef-44f2-9c81-a3fb01063f86";
-baasicKeyValueService.get(id)
+baasicDynamicResourceService.get(id)
     .success(function(data) {
         // data variable contains a single dynamic-resource object that match the key/id
     });
@@ -59,7 +65,7 @@ baasicKeyValueService.get(id)
 
 ```javascript
 var options = { searchQuery: "myQuery", page: 4, rpp: 3 };
-baasicKeyValueService.find(options)
+baasicDynamicResourceService.find(options)
     .success(function(data) {
         // data variable contains a collection of dynamic-resource objects that match the filtering parameters
     });
@@ -74,14 +80,32 @@ var uri = params["model"].links('delete').href;
 // the uri would yield "/resources/73a22b5d-e5ef-44f2-9c81-a3fb01063f86"
 ```
 
-##### dynamicResourceRouteService
+##### dynamicSchemaService
 
-Baasic Dynamic-Resource Route Service provides Baasic route templates which can then be expanded to Baasic REST URI's through the [URI Template](https://github.com/Baasic/uritemplate-js) by providing it with an object that contains URI parameters. `dynamicResourceService` uses `dynamicResourceRouteService` to obtain a part of needed routes while the other part is obtained through HAL. `dynamicResourceRouteService` by convention uses the same function names as `dynamicResourceService`.
+Baasic Dynamic-Schema Service provides an easy way to consume Baasic Dynamic-Schema REST routes. `dynamicSchemaService` functions are not bound to particular dynamic-resource items but are meant to be used on schema resources directly.
+
+* `get` - Gets a single dynamic-schema item by Id
+* `find` - Finds dynamic-schema items by given criteria
+* `create` - Creates a new dynamic-schema item
+* `generate` - ??? (TODO)
+* `update` - Updates a dynamic-schema item
+* `remove` - Deletes a dynamic-schema item
+* `routeService` - Provides direct access to `dynamicSchemaRouteService`
+
+##### RouteServices
+
+Baasic Dynamic-Resource Route Services (`dynamicResourceRouteService`, `dynamicSchemaRouteService`) provide Baasic route templates which can then be expanded to Baasic REST URI's through the [URI Template](https://github.com/Baasic/uritemplate-js) by providing it with an object that contains URI parameters. For example `dynamicResourceService` uses `dynamicResourceRouteService` to obtain a part of needed routes while the other part is obtained through HAL. Route services by convention use the same function names as their corresponding services.
 
 Here is a list of all the `dynamicResourceRouteService` functions:
 
-* `get`, `find`, `create`
-* `parse` - Provides direct access to the `uriTemplateService`
+* __dynamicResourceRouteService__
+ * `get`, `find`, `create`
+ * `permissions.*` - `get`, `update`, `removeByUser`, `removeByRole`
+ * `parse` - Provides direct access to the `uriTemplateService`
+
+* __dynamicSchemaRouteService__
+ * `get`, `find`, `create`, `generate`
+ * `parse` - Provides direct access to the `uriTemplateService`
 
 URI templates can be expanded manually like this:
 
