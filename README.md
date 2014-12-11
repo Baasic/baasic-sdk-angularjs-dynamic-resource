@@ -111,7 +111,7 @@ URI templates can be expanded manually like this:
 
 ```javascript
 var params = { searchQuery: "myQuery", page: 4, rpp: 3 };
-var uri = dynamicResourceRouteService.find.expand(params);
+var uri = baasicDynamicResourceRouteService.find.expand(params);
 // uri will yield "/resources/?searchQuery=myQuery&page=4&rpp=3"
 ```
 
