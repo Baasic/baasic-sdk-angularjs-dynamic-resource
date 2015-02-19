@@ -77,13 +77,13 @@
                 parse: uriTemplateService.parse,
                 permissions: {
                     /**
-                     * Parses get permissions route, this URI template should be expanded with the Id of the dynamic resource and the dynamic schema name.					
+                     * Parses get permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic schema name.					
                      * @method permissions.get       
                      * @example baasicDynamicResourceRouteService.permissions.get.expand({id: "resourceId", resourceName: "resourceName"});               
                      **/
                     get: uriTemplateService.parse("resources/{resourceName}/{id}/permissions/{?fields}"),
                     /**
-                     * Parses update permissions route, this URI template should be expanded with the Id of the dynamic resource and the dynamic schema name.			
+                     * Parses update permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic schema name.			
                      * @method permissions.update       
                      * @example baasicDynamicResourceRouteService.permissions.update.expand({id: "resourceId", resourceName: "resourceName"});               
                      **/
@@ -225,7 +225,7 @@
                     return baasicApiHttp.put(params[baasicConstants.modelPropertyName].links('patch').href, params[baasicConstants.modelPropertyName]);
                 },
                 /**
-                 * Returns a promise that is resolved once the remove action has been performed. If the action is successfully completed the resource is permanently removed from the system.
+                 * Returns a promise that is resolved once the remove action has been performed. If the action is successfully completed the dynamic resource is permanently removed from the system.
                  * @method        
                  * @example 
                  // Existing resource is a resource previously fetched using get action.
@@ -352,13 +352,13 @@
                  **/
                 get: uriTemplateService.parse("schemas/{resourceName}/{?embed,fields}"),
                 /**
-                 * Parses create route, this URI template doesn't expose any additional properties.
+                 * Parses create route; this URI template doesn't expose any additional properties.
                  * @method      
                  * @example baasicDynamicSchemaRouteService.create.expand({});              
                  **/
                 generate: uriTemplateService.parse("schemas/generate"),
                 /**
-                 * Parses create route, this URI template doesn't expose any additional properties.
+                 * Parses create route; this URI template doesn't expose any additional properties.
                  * @method      
                  * @example baasicDynamicSchemaRouteService.create.expand({});              
                  **/

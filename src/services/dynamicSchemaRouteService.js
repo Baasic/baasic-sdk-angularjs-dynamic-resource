@@ -33,13 +33,13 @@
 				**/ 					
                 get: uriTemplateService.parse("schemas/{resourceName}/{?embed,fields}"),
 				/**
-				* Parses create route, this URI template doesn't expose any additional properties.
+				* Parses create route; this URI template doesn't expose any additional properties.
 				* @method      
 				* @example baasicDynamicSchemaRouteService.create.expand({});              
 				**/				
                 generate: uriTemplateService.parse("schemas/generate"),
 				/**
-				* Parses create route, this URI template doesn't expose any additional properties.
+				* Parses create route; this URI template doesn't expose any additional properties.
 				* @method      
 				* @example baasicDynamicSchemaRouteService.create.expand({});              
 				**/  				
