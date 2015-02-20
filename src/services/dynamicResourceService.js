@@ -32,14 +32,14 @@ baasicDynamicResourceService.find({
   // perform error handling here
 });    
                 **/ 				
-                find: function (resourceName, options) {
-                    return baasicApiHttp.get(dynamicResourceRouteService.find.expand(baasicApiService.findParams(angular.extend({ resourceName: resourceName }, options))));
+                find: function (schemaName, options) {
+                    return baasicApiHttp.get(dynamicResourceRouteService.find.expand(baasicApiService.findParams(angular.extend({ schemaName: schemaName }, options))));
                 },
                  /**
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource.
                  * @method        
                  * @example 
-baasicDynamicResourceService.get("resourceName", "resourceId")
+baasicDynamicResourceService.get("schemaName", "resourceId")
 .success(function (data) {
   // perform success action here
 })
@@ -47,8 +47,8 @@ baasicDynamicResourceService.get("resourceName", "resourceId")
   // perform error handling here
 });
                 **/ 				
-                get: function (resourceName, id, options) {
-                    return baasicApiHttp.get(dynamicResourceRouteService.get.expand(baasicApiService.getParams(id, angular.extend({ resourceName: resourceName }, options))));
+                get: function (schemaName, id, options) {
+                    return baasicApiHttp.get(dynamicResourceRouteService.get.expand(baasicApiService.getParams(id, angular.extend({ schemaName: schemaName }, options))));
                 },
                  /**
                  * Returns a promise that is resolved once the create dynamic resource action has been performed.
@@ -65,8 +65,8 @@ baasicDynamicResourceService.create({
   // perform error handling here
 });
                  **/ 					
-                create: function (resourceName, data) {
-                    var params = baasicApiService.getParams(resourceName, data, 'resourceName');
+                create: function (schemaName, data) {
+                    var params = baasicApiService.getParams(schemaName, data, 'schemaName');
                     return baasicApiHttp.post(dynamicResourceRouteService.create.expand(params), baasicApiService.createParams(params)[baasicConstants.modelPropertyName]);
                 },
                  /**
@@ -128,7 +128,7 @@ baasicDynamicResourceService.remove(existingResource)
                     * Returns a promise that is resolved once the get action has been performed. Success response returns a list of permissions.
                     * @method permissions.get       
                     * @example 
-baasicDynamicResourceService.permissions.get({id: "uniqueId", resourceName: "resourceName"})
+baasicDynamicResourceService.permissions.get({id: "uniqueId", schemaName: "schemaName"})
 .success(function (data) {
   // perform success action here
 })

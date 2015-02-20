@@ -46,29 +46,29 @@
             return {
                 /**
                  * Parses find route which can be expanded with additional options. Supported items are: 
-                 * - `resourceName` - Name of the dynamic resource.
+                 * - `schemaName` - Name of the dynamic resource.
                  * - `searchQuery` - A string referencing resource properties using the phrase or query search.
                  * - `page` - A value used to set the page size, i.e. to retrieve certain resource subset from the storage.
                  * - `rpp` - A value used to limit the size of result set per page.
                  * - `sort` - A string used to set the role property to sort the result collection by.
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
-                 * @example baasicDynamicResourceRouteService.find.expand({resourceName: "resourceName", searchQuery: "searchTerm"});               
+                 * @example baasicDynamicResourceRouteService.find.expand({schemaName: "schemaName", searchQuery: "searchTerm"});               
                  **/
-                find: uriTemplateService.parse("resources/{resourceName}/{?searchQuery,page,rpp,sort,embed,fields}"),
+                find: uriTemplateService.parse("resources/{schemaName}/{?searchQuery,page,rpp,sort,embed,fields}"),
                 /**
                  * Parses get route which must be expanded with the resource name of the previously created dynamic schema resource in the system and the Id of the previously created dynamic resource. Additional expand supported items are:
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
-                 * @example baasicDynamicResourceRouteService.find.expand({resourceName: "resourceName", id: "uniqueID"});               
+                 * @example baasicDynamicResourceRouteService.find.expand({schemaName: "schemaName", id: "uniqueID"});               
                  **/
-                get: uriTemplateService.parse("resources/{resourceName}/{id}/{?embed,fields}"),
+                get: uriTemplateService.parse("resources/{schemaName}/{id}/{?embed,fields}"),
                 /**
                  * Parses create route, this URI template doesn't expose any additional properties.
                  * @method      
                  * @example baasicDynamicResourceRouteService.create.expand({});              
                  **/
-                create: uriTemplateService.parse("resources/{resourceName}"),
+                create: uriTemplateService.parse("resources/{schemaName}"),
                 /**
                  * Parses and expands URI templates based on [RFC6570](http://tools.ietf.org/html/rfc6570) specifications. For more information please visit the project [github](https://github.com/Baasic/uritemplate-js) page.
                  * @method
@@ -79,35 +79,35 @@
                     /**
                      * Parses get permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic schema name.					
                      * @method permissions.get       
-                     * @example baasicDynamicResourceRouteService.permissions.get.expand({id: "resourceId", resourceName: "resourceName"});               
+                     * @example baasicDynamicResourceRouteService.permissions.get.expand({id: "resourceId", schemaName: "schemaName"});               
                      **/
-                    get: uriTemplateService.parse("resources/{resourceName}/{id}/permissions/{?fields}"),
+                    get: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
                     /**
                      * Parses update permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic schema name.			
                      * @method permissions.update       
-                     * @example baasicDynamicResourceRouteService.permissions.update.expand({id: "resourceId", resourceName: "resourceName"});               
+                     * @example baasicDynamicResourceRouteService.permissions.update.expand({id: "resourceId", schemaName: "schemaName"});               
                      **/
-                    update: uriTemplateService.parse("resources/{resourceName}/{id}/permissions/{?fields}"),
+                    update: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
                     /**
                      * Parses deleteByUser permissions route which can be expanded with additional options. Supported items are:
-                     * - `resourceName` - Name of the dynamic schema resource.
+                     * - `schemaName` - Name of the dynamic schema resource.
                      * - `id` - Id of the dynamic resource.
                      * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified user and article resource.
                      * - `user` - A value which uniquely identifies user for which ACL policy needs to be removed.					
                      * @method permissions.deleteByUser       
-                     * @example baasicDynamicResourceRouteService.permissions.deleteByUser.expand({resourceName: "resourceName", id: "resourceId", accessAction: "read", user: "username"});               
+                     * @example baasicDynamicResourceRouteService.permissions.deleteByUser.expand({schemaName: "schemaName", id: "resourceId", accessAction: "read", user: "username"});               
                      **/
-                    deleteByUser: uriTemplateService.parse("resources/{resourceName}/{id}/permissions/actions/{accessAction}/users/{user}/"),
+                    deleteByUser: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/users/{user}/"),
                     /**
                      * Parses deleteByUser permissions route which can be expanded with additional options. Supported items are:
-                     * - `resourceName` - Name of the dynamic schema resource.
+                     * - `schemaName` - Name of the dynamic schema resource.
                      * - `id` - Id of the dynamic resource.
                      * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified role and article resource.
                      * - `role` - A value which uniquely identifies role for which ACL policy needs to be removed.					
                      * @method permissions.deleteByRole       
-                     * @example baasicArticleRatingsRouteService.permissions.deleteByRole.expand({resourceName: "resourceName", id: "resourceId", accessAction: "read", role: "roleName"});               
+                     * @example baasicArticleRatingsRouteService.permissions.deleteByRole.expand({schemaName: "schemaName", id: "resourceId", accessAction: "read", role: "roleName"});               
                      **/
-                    deleteByRole: uriTemplateService.parse("resources/{resourceName}/{id}/permissions/actions/{accessAction}/roles/{role}/")
+                    deleteByRole: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/roles/{role}/")
                 }
             };
         }]);
@@ -146,16 +146,16 @@
                  // perform error handling here
                  });
                  **/
-                find: function (resourceName, options) {
+                find: function (schemaName, options) {
                     return baasicApiHttp.get(dynamicResourceRouteService.find.expand(baasicApiService.findParams(angular.extend({
-                        resourceName: resourceName
+                        schemaName: schemaName
                     }, options))));
                 },
                 /**
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource.
                  * @method        
                  * @example 
-                 baasicDynamicResourceService.get("resourceName", "resourceId")
+                 baasicDynamicResourceService.get("schemaName", "resourceId")
                  .success(function (data) {
                  // perform success action here
                  })
@@ -163,9 +163,9 @@
                  // perform error handling here
                  });
                  **/
-                get: function (resourceName, id, options) {
+                get: function (schemaName, id, options) {
                     return baasicApiHttp.get(dynamicResourceRouteService.get.expand(baasicApiService.getParams(id, angular.extend({
-                        resourceName: resourceName
+                        schemaName: schemaName
                     }, options))));
                 },
                 /**
@@ -183,8 +183,8 @@
                  // perform error handling here
                  });
                  **/
-                create: function (resourceName, data) {
-                    var params = baasicApiService.getParams(resourceName, data, 'resourceName');
+                create: function (schemaName, data) {
+                    var params = baasicApiService.getParams(schemaName, data, 'schemaName');
                     return baasicApiHttp.post(dynamicResourceRouteService.create.expand(params), baasicApiService.createParams(params)[baasicConstants.modelPropertyName]);
                 },
                 /**
@@ -246,7 +246,7 @@
                      * Returns a promise that is resolved once the get action has been performed. Success response returns a list of permissions.
                      * @method permissions.get       
                      * @example 
-                     baasicDynamicResourceService.permissions.get({id: "uniqueId", resourceName: "resourceName"})
+                     baasicDynamicResourceService.permissions.get({id: "uniqueId", schemaName: "schemaName"})
                      .success(function (data) {
                      // perform success action here
                      })
@@ -348,9 +348,9 @@
                  * Parses get route which must be expanded with the resource name of the previously created resource in the system. Additional expand supported items are:
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
-                 * @example baasicDynamicSchemaRouteService.find.expand({resourceName: "resourceName"});               
+                 * @example baasicDynamicSchemaRouteService.find.expand({schemaName: "schemaName"});               
                  **/
-                get: uriTemplateService.parse("schemas/{resourceName}/{?embed,fields}"),
+                get: uriTemplateService.parse("schemas/{schemaName}/{?embed,fields}"),
                 /**
                  * Parses create route; this URI template doesn't expose any additional properties.
                  * @method      
@@ -394,7 +394,7 @@
                  baasicDynamicSchemaService.find({
                  pageNumber : 1,
                  pageSize : 10,
-                 orderBy : "resourceName",
+                 orderBy : "schemaName",
                  orderDirection : "desc",
                  search : "searchTerm"
                  })
@@ -412,7 +412,7 @@
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource.
                  * @method        
                  * @example 
-                 baasicDynamicSchemaService.get("resourceName")
+                 baasicDynamicSchemaService.get("schemaName")
                  .success(function (data) {
                  // perform success action here
                  })
@@ -420,8 +420,8 @@
                  // perform error handling here
                  });
                  **/
-                get: function (resourceName, options) {
-                    return baasicApiHttp.get(dynamicSchemaRouteService.get.expand(baasicApiService.getParams(resourceName, options, 'resourceName')));
+                get: function (schemaName, options) {
+                    return baasicApiHttp.get(dynamicSchemaRouteService.get.expand(baasicApiService.getParams(schemaName, options, 'schemaName')));
                 },
                 /**
                  * Returns a promise that is resolved once the create action has been performed.
@@ -442,7 +442,7 @@
                  }
                  }
                  },
-                 resourceName : "resourceName",
+                 schemaName : "schemaName",
                  description : "test",
                  enforceSchemaValidation : true
                  })
