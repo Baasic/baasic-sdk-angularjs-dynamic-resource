@@ -29,9 +29,9 @@
                 * Parses get route which must be expanded with the resource name of the previously created resource in the system. Additional expand supported items are:
 				* - `embed` - Comma separated list of resources to be contained within the current representation.
 				* @method      
-				* @example baasicDynamicSchemaRouteService.find.expand({schemaName: "schemaName"});               
+				* @example baasicDynamicSchemaRouteService.find.expand({name: "name"});               
 				**/ 					
-                get: uriTemplateService.parse("schemas/{schemaName}/{?embed,fields}"),
+                get: uriTemplateService.parse("schemas/{name}/{?embed,fields}"),
 				/**
 				* Parses create route; this URI template doesn't expose any additional properties.
 				* @method      

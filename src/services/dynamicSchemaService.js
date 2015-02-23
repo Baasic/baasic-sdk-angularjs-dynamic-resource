@@ -21,7 +21,7 @@
 baasicDynamicSchemaService.find({
   pageNumber : 1,
   pageSize : 10,
-  orderBy : "schemaName",
+  orderBy : "name",
   orderDirection : "desc",
   search : "searchTerm"
 })
@@ -39,7 +39,7 @@ baasicDynamicSchemaService.find({
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource.
                  * @method        
                  * @example 
-baasicDynamicSchemaService.get("schemaName")
+baasicDynamicSchemaService.get("name")
 .success(function (data) {
   // perform success action here
 })
@@ -47,8 +47,8 @@ baasicDynamicSchemaService.get("schemaName")
   // perform error handling here
 });
                 **/ 				
-                get: function (schemaName, options) {
-                    return baasicApiHttp.get(dynamicSchemaRouteService.get.expand(baasicApiService.getParams(schemaName, options, 'schemaName')));
+                get: function (name, options) {
+                    return baasicApiHttp.get(dynamicSchemaRouteService.get.expand(baasicApiService.getParams(name, options, 'name')));
                 },
                 /**
                 * Returns a promise that is resolved once the create action has been performed.
@@ -69,7 +69,7 @@ baasicDynamicSchemaService.create({
       }
     }
   },
-  schemaName : "schemaName",
+  name : "name",
   description : "test",
   enforceSchemaValidation : true
 })

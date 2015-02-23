@@ -348,9 +348,9 @@
                  * Parses get route which must be expanded with the resource name of the previously created resource in the system. Additional expand supported items are:
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
-                 * @example baasicDynamicSchemaRouteService.find.expand({schemaName: "schemaName"});               
+                 * @example baasicDynamicSchemaRouteService.find.expand({name: "name"});               
                  **/
-                get: uriTemplateService.parse("schemas/{schemaName}/{?embed,fields}"),
+                get: uriTemplateService.parse("schemas/{name}/{?embed,fields}"),
                 /**
                  * Parses create route; this URI template doesn't expose any additional properties.
                  * @method      
@@ -394,7 +394,7 @@
                  baasicDynamicSchemaService.find({
                  pageNumber : 1,
                  pageSize : 10,
-                 orderBy : "schemaName",
+                 orderBy : "name",
                  orderDirection : "desc",
                  search : "searchTerm"
                  })
@@ -412,7 +412,7 @@
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource.
                  * @method        
                  * @example 
-                 baasicDynamicSchemaService.get("schemaName")
+                 baasicDynamicSchemaService.get("name")
                  .success(function (data) {
                  // perform success action here
                  })
@@ -420,8 +420,8 @@
                  // perform error handling here
                  });
                  **/
-                get: function (schemaName, options) {
-                    return baasicApiHttp.get(dynamicSchemaRouteService.get.expand(baasicApiService.getParams(schemaName, options, 'schemaName')));
+                get: function (name, options) {
+                    return baasicApiHttp.get(dynamicSchemaRouteService.get.expand(baasicApiService.getParams(name, options, 'name')));
                 },
                 /**
                  * Returns a promise that is resolved once the create action has been performed.
@@ -442,7 +442,7 @@
                  }
                  }
                  },
-                 schemaName : "schemaName",
+                 name : "name",
                  description : "test",
                  enforceSchemaValidation : true
                  })
