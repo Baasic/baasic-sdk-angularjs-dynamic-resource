@@ -1,34 +1,33 @@
 {
   "name": "baasic-angular-dynamic-resource",
-  "version": "0.1.25",
+  "version": "0.2.0",
   "description": "Baasic AngularJS SDK dynamic resource modules and services.",
   "keywords": [
     "angularjs",
     "baasic",
-	"dynamic resource",
-	"JSON"
+    "dynamic resource",
+    "JSON",
     "backend"
   ],
   "license": "MIT",
   "main": "dist/baasic-angular-dynamic-resource.js",
   "ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"tests",
-        "src",
-        "spec",
-		"NuGet",
-		"lib",
-        "bower.json",
-        "gulpfile.js",
-        "package.json",
-        "README.md"
-    ],
-  "devDependencies": {
-  },
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src",
+    "spec",
+    "NuGet",
+    "lib",
+    "bower.json",
+    "gulpfile.js",
+    "package.json",
+    "README.md"
+  ],
+  "devDependencies": {},
   "dependencies": {
-	"baasic-angular-core": "baasic/baasic-sdk-angularjs-core"
+    "baasic-angular-core": "http://gitserver/monosoftware/baasic-sdk-angularjs-core.git#~0.2.1"
   }
 }
