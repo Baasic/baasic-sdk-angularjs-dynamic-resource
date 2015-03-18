@@ -20,7 +20,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('docs', function() {
-  docgen.generateBaasicDocs('src', 'wiki', 'Baasic Dynamic Resource Navigation', ['config.js']);
+  docgen.generateBaasicDocs('src', 'wiki', 'Baasic Dynamic Resource Navigation', ['config.js'], ['home.md']);
 });
 
 gulp.task('default', ['scripts', 'docs']);

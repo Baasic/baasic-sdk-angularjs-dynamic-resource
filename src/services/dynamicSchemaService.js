@@ -1,9 +1,6 @@
 ﻿/**
  * @module baasicDynamicSchemaService
-**/
-
-/** 
- * @overview Dynamic schema service.
+ * @description Baasic Dynamic-Schema Service provides an easy way to consume Baasic Dynamic-Schema REST routes. `baasicDynamicSchemaService` functions are not bound to particular dynamic-resource items but are meant to be used on schema resources directly.
  * @copyright (c) 2015 Mono-Software
  * @license MIT
  * @author Mono-Software
@@ -15,7 +12,7 @@
             return {
                 routeService: dynamicSchemaRouteService,
                  /**
-                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resources.
+                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resource shemas.
                  * @method        
                  * @example 
 baasicDynamicSchemaService.find({
@@ -36,7 +33,7 @@ baasicDynamicSchemaService.find({
                     return baasicApiHttp.get(dynamicSchemaRouteService.find.expand(baasicApiService.findParams(options)));
                 },
                  /**
-                 * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource.
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource shema.
                  * @method        
                  * @example 
 baasicDynamicSchemaService.get("name")
@@ -84,7 +81,7 @@ baasicDynamicSchemaService.create({
                     return baasicApiHttp.post(dynamicSchemaRouteService.create.expand({}), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
                 },
                  /**
-                 * Returns a promise that is resolved once the update dynamic resource action has been performed.
+                 * Returns a promise that is resolved once the update dynamic resource shema action has been performed.
                  * @method        
                  * @example 
 // Existing resource is a resource previously fetched using get action.
