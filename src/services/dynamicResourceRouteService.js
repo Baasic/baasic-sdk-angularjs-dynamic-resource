@@ -12,7 +12,7 @@
             return {
 				/**
 				* Parses find route which can be expanded with additional options. Supported items are: 
-				* - `schemaName` - Name of the dynamic resource shema.
+				* - `schemaName` - Name of the dynamic resource schema.
 				* - `searchQuery` - A string referencing resource properties using the phrase or query search.
 				* - `page` - A value used to set the page size, i.e. to retrieve certain resource subset from the storage.
 				* - `rpp` - A value used to limit the size of result set per page.
@@ -23,7 +23,7 @@
 				**/ 			
                 find: uriTemplateService.parse("resources/{schemaName}/{?searchQuery,page,rpp,sort,embed,fields}"),
 				/**
-                * Parses get route which must be expanded with the resource name of the previously created dynamic resource shema in the system and the Id of the previously created dynamic resource shema. Additional expand supported items are:
+                * Parses get route which must be expanded with the resource name of the previously created dynamic resource schema in the system and the Id of the previously created dynamic resource. Additional expand supported items are:
 				* - `embed` - Comma separated list of resources to be contained within the current representation.
 				* @method      
 				* @example baasicDynamicResourceRouteService.find.expand({schemaName: "schemaName", id: "uniqueID"});               
@@ -43,21 +43,21 @@
                 parse: uriTemplateService.parse,					
                 permissions: {
 					/**
-					* Parses get permissions route; this URI template should be expanded with the Id of the dynamic resource shema and the dynamic resource shema name.					
+					* Parses get permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.					
 					* @method permissions.get       
 					* @example baasicDynamicResourceRouteService.permissions.get.expand({id: "resourceId", schemaName: "schemaName"});               
 					**/ 				
                     get: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
 					/**
-					* Parses update permissions route; this URI template should be expanded with the Id of the dynamic resource shema and the dynamic resource shema name.			
+					* Parses update permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.			
 					* @method permissions.update       
 					* @example baasicDynamicResourceRouteService.permissions.update.expand({id: "resourceId", schemaName: "schemaName"});               
 					**/ 					
                     update: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
 					/**
 					* Parses deleteByUser permissions route which can be expanded with additional options. Supported items are:
-					* - `schemaName` - Name of the dynamic schema resource.
-					* - `id` - Id of the dynamic resource shema.
+					* - `schemaName` - Name of the dynamic resource schema.
+					* - `id` - Id of the dynamic resource.
 					* - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified user and article resource.
 					* - `user` - A value which uniquely identifies user for which ACL policy needs to be removed.					
 					* @method permissions.deleteByUser       
@@ -66,8 +66,8 @@
                     deleteByUser: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/users/{user}/"),
 					/**
 					* Parses deleteByUser permissions route which can be expanded with additional options. Supported items are:
-					* - `schemaName` - Name of the dynamic schema resource.
-					* - `id` - Id of the dynamic resource shema.
+					* - `schemaName` - Name of the dynamic resource schema.
+					* - `id` - Id of the dynamic resource.
 					* - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified role and article resource.
 					* - `role` - A value which uniquely identifies role for which ACL policy needs to be removed.					
 					* @method permissions.deleteByRole       

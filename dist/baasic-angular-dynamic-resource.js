@@ -39,7 +39,7 @@
             return {
                 /**
                  * Parses find route which can be expanded with additional options. Supported items are: 
-                 * - `schemaName` - Name of the dynamic resource shema.
+                 * - `schemaName` - Name of the dynamic resource schema.
                  * - `searchQuery` - A string referencing resource properties using the phrase or query search.
                  * - `page` - A value used to set the page size, i.e. to retrieve certain resource subset from the storage.
                  * - `rpp` - A value used to limit the size of result set per page.
@@ -50,7 +50,7 @@
                  **/
                 find: uriTemplateService.parse("resources/{schemaName}/{?searchQuery,page,rpp,sort,embed,fields}"),
                 /**
-                 * Parses get route which must be expanded with the resource name of the previously created dynamic resource shema in the system and the Id of the previously created dynamic resource shema. Additional expand supported items are:
+                 * Parses get route which must be expanded with the resource name of the previously created dynamic resource schema in the system and the Id of the previously created dynamic resource. Additional expand supported items are:
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
                  * @example baasicDynamicResourceRouteService.find.expand({schemaName: "schemaName", id: "uniqueID"});               
@@ -70,21 +70,21 @@
                 parse: uriTemplateService.parse,
                 permissions: {
                     /**
-                     * Parses get permissions route; this URI template should be expanded with the Id of the dynamic resource shema and the dynamic resource shema name.					
+                     * Parses get permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.					
                      * @method permissions.get       
                      * @example baasicDynamicResourceRouteService.permissions.get.expand({id: "resourceId", schemaName: "schemaName"});               
                      **/
                     get: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
                     /**
-                     * Parses update permissions route; this URI template should be expanded with the Id of the dynamic resource shema and the dynamic resource shema name.			
+                     * Parses update permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.			
                      * @method permissions.update       
                      * @example baasicDynamicResourceRouteService.permissions.update.expand({id: "resourceId", schemaName: "schemaName"});               
                      **/
                     update: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
                     /**
                      * Parses deleteByUser permissions route which can be expanded with additional options. Supported items are:
-                     * - `schemaName` - Name of the dynamic schema resource.
-                     * - `id` - Id of the dynamic resource shema.
+                     * - `schemaName` - Name of the dynamic resource schema.
+                     * - `id` - Id of the dynamic resource.
                      * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified user and article resource.
                      * - `user` - A value which uniquely identifies user for which ACL policy needs to be removed.					
                      * @method permissions.deleteByUser       
@@ -93,8 +93,8 @@
                     deleteByUser: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/users/{user}/"),
                     /**
                      * Parses deleteByUser permissions route which can be expanded with additional options. Supported items are:
-                     * - `schemaName` - Name of the dynamic schema resource.
-                     * - `id` - Id of the dynamic resource shema.
+                     * - `schemaName` - Name of the dynamic resource schema.
+                     * - `id` - Id of the dynamic resource.
                      * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified role and article resource.
                      * - `role` - A value which uniquely identifies role for which ACL policy needs to be removed.					
                      * @method permissions.deleteByRole       
@@ -332,7 +332,7 @@
                  **/
                 find: uriTemplateService.parse("schemas/{?searchQuery,page,rpp,sort,embed,fields}"),
                 /**
-                 * Parses get route which must be expanded with the resource name of the previously created resource in the system. Additional expand supported items are:
+                 * Parses get route which must be expanded with the dynamic resource schema name of the previously created resource in the system. Additional expand supported items are:
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
                  * @example baasicDynamicSchemaRouteService.find.expand({name: "name"});               
@@ -361,7 +361,7 @@
     }(angular, module));
     /**
      * @module baasicDynamicSchemaService
-     * @description Baasic Dynamic-Schema Service provides an easy way to consume Baasic Dynamic-Schema REST routes. `baasicDynamicSchemaService` functions are not bound to particular dynamic-resource items but are meant to be used on schema resources directly.
+     * @description Baasic Dynamic Schema Service provides an easy way to consume Baasic Dynamic-Schema REST routes. `baasicDynamicSchemaService` functions are not bound to particular dynamic resource schema items but are meant to be used on dynamic resources directly.
      * @copyright (c) 2015 Mono-Software
      * @license MIT
      * @author Mono-Software
@@ -372,7 +372,7 @@
             return {
                 routeService: dynamicSchemaRouteService,
                 /**
-                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resource shemas.
+                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resource schemas.
                  * @method        
                  * @example 
                  baasicDynamicSchemaService.find({
@@ -393,7 +393,7 @@
                     return baasicApiHttp.get(dynamicSchemaRouteService.find.expand(baasicApiService.findParams(options)));
                 },
                 /**
-                 * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource shema.
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource schema.
                  * @method        
                  * @example 
                  baasicDynamicSchemaService.get("name")
@@ -441,7 +441,7 @@
                     return baasicApiHttp.post(dynamicSchemaRouteService.create.expand({}), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
                 },
                 /**
-                 * Returns a promise that is resolved once the update dynamic resource shema action has been performed.
+                 * Returns a promise that is resolved once the update dynamic resource schema action has been performed.
                  * @method        
                  * @example 
                  // Existing resource is a resource previously fetched using get action.
@@ -482,7 +482,7 @@
                  // Existing resource is a resource previously fetched using get action.
                  baasicDynamicSchemaService.generate({
                  id : "Unique identifier is handled automatically by the Baasic back - end",
-                 description : "Dynamic Schema"
+                 description : "Dynamic Resource Schema"
                  })
                  .success(function (data) {
                  // perform success action here

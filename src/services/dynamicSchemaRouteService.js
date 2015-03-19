@@ -23,7 +23,7 @@
 				**/ 			
                 find: uriTemplateService.parse("schemas/{?searchQuery,page,rpp,sort,embed,fields}"),
 				/**
-                * Parses get route which must be expanded with the resource name of the previously created resource in the system. Additional expand supported items are:
+                * Parses get route which must be expanded with the dynamic resource schema name of the previously created resource in the system. Additional expand supported items are:
 				* - `embed` - Comma separated list of resources to be contained within the current representation.
 				* @method      
 				* @example baasicDynamicSchemaRouteService.find.expand({name: "name"});               

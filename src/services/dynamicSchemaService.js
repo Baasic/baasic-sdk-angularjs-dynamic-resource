@@ -1,6 +1,6 @@
 ﻿/**
  * @module baasicDynamicSchemaService
- * @description Baasic Dynamic-Schema Service provides an easy way to consume Baasic Dynamic-Schema REST routes. `baasicDynamicSchemaService` functions are not bound to particular dynamic-resource items but are meant to be used on schema resources directly.
+ * @description Baasic Dynamic Schema Service provides an easy way to consume Baasic Dynamic-Schema REST routes. `baasicDynamicSchemaService` functions are not bound to particular dynamic resource schema items but are meant to be used on dynamic resources directly.
  * @copyright (c) 2015 Mono-Software
  * @license MIT
  * @author Mono-Software
@@ -12,7 +12,7 @@
             return {
                 routeService: dynamicSchemaRouteService,
                  /**
-                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resource shemas.
+                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resource schemas.
                  * @method        
                  * @example 
 baasicDynamicSchemaService.find({
@@ -33,7 +33,7 @@ baasicDynamicSchemaService.find({
                     return baasicApiHttp.get(dynamicSchemaRouteService.find.expand(baasicApiService.findParams(options)));
                 },
                  /**
-                 * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource shema.
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource schema.
                  * @method        
                  * @example 
 baasicDynamicSchemaService.get("name")
@@ -81,7 +81,7 @@ baasicDynamicSchemaService.create({
                     return baasicApiHttp.post(dynamicSchemaRouteService.create.expand({}), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
                 },
                  /**
-                 * Returns a promise that is resolved once the update dynamic resource shema action has been performed.
+                 * Returns a promise that is resolved once the update dynamic resource schema action has been performed.
                  * @method        
                  * @example 
 // Existing resource is a resource previously fetched using get action.
@@ -122,7 +122,7 @@ baasicDynamicSchemaService.remove(existingResource)
 // Existing resource is a resource previously fetched using get action.				 
 baasicDynamicSchemaService.generate({
   id : "Unique identifier is handled automatically by the Baasic back - end",
-  description : "Dynamic Schema"
+  description : "Dynamic Resource Schema"
 })
 .success(function (data) {
   // perform success action here
