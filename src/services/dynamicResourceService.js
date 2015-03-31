@@ -20,7 +20,7 @@ baasicDynamicResourceService.find({
   pageSize : 10,
   orderBy : "dateCreated",
   orderDirection : "desc",
-  search : "searchTerm"
+  search : "<search-phrase>"
 })
 .success(function (collection) {
   // perform success action here
@@ -36,7 +36,7 @@ baasicDynamicResourceService.find({
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource.
                  * @method        
                  * @example 
-baasicDynamicResourceService.get("schemaName", "resourceId")
+baasicDynamicResourceService.get("<schema-Nnme>", "<dynamic-resource-id>")
 .success(function (data) {
   // perform success action here
 })
@@ -53,7 +53,7 @@ baasicDynamicResourceService.get("schemaName", "resourceId")
                  * @example 
 baasicDynamicResourceService.create({
   id : "",
-  description : "test"  
+  description : "<description>"  
 })
 .success(function (data) {
   // perform success action here
@@ -71,7 +71,7 @@ baasicDynamicResourceService.create({
                  * @method        
                  * @example 
 // Existing resource is a resource previously fetched using get action.
-existingResource.description = 'updated description';
+existingResource.description = '<description>';
 baasicDynamicResourceService.update(existingResource)
 .success(function (data) {
   // perform success action here
@@ -89,8 +89,8 @@ baasicDynamicResourceService.update(existingResource)
                  * @method        
                  * @example 
 // Existing resource is a resource previously fetched using get action.
-existingResource.description = 'updated description';
-existingResource.newField = 'new field added';
+existingResource.description = '<new-description>';
+existingResource.newField = '<newfield-value>';
 baasicDynamicResourceService.update(existingResource)
 .success(function (data) {
   // perform success action here
@@ -125,7 +125,7 @@ baasicDynamicResourceService.remove(existingResource)
                     * Returns a promise that is resolved once the get action has been performed. Success response returns a list of permissions.
                     * @method permissions.get       
                     * @example 
-baasicDynamicResourceService.permissions.get({id: "uniqueId", schemaName: "schemaName"})
+baasicDynamicResourceService.permissions.get({id: "<dynamic-resource-id>", schemaName: "<schema-name>"})
 .success(function (data) {
   // perform success action here
 })
@@ -159,7 +159,7 @@ baasicDynamicResourceService.permissions.update(existingResource)
                     * @method permissions.update      
                     * @example 
 // Existing resource is a resource previously fetched using get action.					
-baasicDynamicResourceService.permissions.removeByUser("read", "userName", existingResource)
+baasicDynamicResourceService.permissions.removeByUser("<access-action>", "<username>", existingResource)
 .success(function (data) {
   // perform success action here
 })
@@ -178,7 +178,7 @@ baasicDynamicResourceService.permissions.removeByUser("read", "userName", existi
                     * @method permissions.update      
                     * @example 
 // Existing resource is a resource previously fetched using get action.						
-baasicDynamicResourceService.permissions.removeByRole("read", "role name", existingResource)
+baasicDynamicResourceService.permissions.removeByRole("<access-action>", "<role-name>", existingResource)
 .success(function (data) {
   // perform success action here
 })

@@ -20,7 +20,7 @@ baasicDynamicSchemaService.find({
   pageSize : 10,
   orderBy : "name",
   orderDirection : "desc",
-  search : "searchTerm"
+  search : "<search-phrase>"
 })
 .success(function (collection) {
   // perform success action here
@@ -36,7 +36,7 @@ baasicDynamicSchemaService.find({
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource schema.
                  * @method        
                  * @example 
-baasicDynamicSchemaService.get("name")
+baasicDynamicSchemaService.get("<schema-name>")
 .success(function (data) {
   // perform success action here
 })
@@ -56,7 +56,7 @@ baasicDynamicSchemaService.create({
     type : "object",
     properties : {
       id : {
-        title : "Unique Identifier Field",
+        title : "<unique-identifier-field>",
         readonly : true,
         hidden : true,
         type : "string"
@@ -66,8 +66,8 @@ baasicDynamicSchemaService.create({
       }
     }
   },
-  name : "name",
-  description : "test",
+  name : "<schema-name>",
+  description : "<schema-description>",
   enforceSchemaValidation : true
 })
 .success(function (data) {
@@ -85,7 +85,7 @@ baasicDynamicSchemaService.create({
                  * @method        
                  * @example 
 // Existing resource is a resource previously fetched using get action.
-existingResource.description = "updated description";
+existingResource.description = "<schema-description>";
 baasicDynamicSchemaService.update(existingResource)
 .success(function (data) {
   // perform success action here
@@ -121,8 +121,8 @@ baasicDynamicSchemaService.remove(existingResource)
                 * @example 
 // Existing resource is a resource previously fetched using get action.				 
 baasicDynamicSchemaService.generate({
-  id : "Unique identifier is handled automatically by the Baasic back - end",
-  description : "Dynamic Resource Schema"
+  id : "<schema-Id>",
+  description : "<schema-description>"
 })
 .success(function (data) {
   // perform success action here

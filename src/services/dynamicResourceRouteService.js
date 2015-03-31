@@ -19,14 +19,14 @@
 				* - `sort` - A string used to set the role property to sort the result collection by.
 				* - `embed` - Comma separated list of resources to be contained within the current representation.
 				* @method      
-				* @example baasicDynamicResourceRouteService.find.expand({schemaName: "schemaName", searchQuery: "searchTerm"});               
+				* @example baasicDynamicResourceRouteService.find.expand({schemaName: "<schema-name>", searchQuery: "<search-phrase>"});
 				**/ 			
                 find: uriTemplateService.parse("resources/{schemaName}/{?searchQuery,page,rpp,sort,embed,fields}"),
 				/**
                 * Parses get route which must be expanded with the resource name of the previously created dynamic resource schema in the system and the Id of the previously created dynamic resource. Additional expand supported items are:
 				* - `embed` - Comma separated list of resources to be contained within the current representation.
 				* @method      
-				* @example baasicDynamicResourceRouteService.find.expand({schemaName: "schemaName", id: "uniqueID"});               
+				* @example baasicDynamicResourceRouteService.find.expand({schemaName: "<schema-name>", id: "<schema-id>"});               
 				**/ 					
                 get: uriTemplateService.parse("resources/{schemaName}/{id}/{?embed,fields}"),
 				/**
@@ -38,20 +38,20 @@
 				/**
 				* Parses and expands URI templates based on [RFC6570](http://tools.ietf.org/html/rfc6570) specifications. For more information please visit the project [GitHub](https://github.com/Baasic/uritemplate-js) page.
 				* @method
-				* @example baasicDynamicResourceRouteService.parse("route/{?embed,fields,options}").expand({embed: "embeddedResource"});
+				* @example baasicDynamicResourceRouteService.parse("route/{?embed,fields,options}").expand({embed: "<embedded-resource>"});
 				**/					
                 parse: uriTemplateService.parse,					
                 permissions: {
 					/**
 					* Parses get permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.					
 					* @method permissions.get       
-					* @example baasicDynamicResourceRouteService.permissions.get.expand({id: "resourceId", schemaName: "schemaName"});               
+					* @example baasicDynamicResourceRouteService.permissions.get.expand({id: "<dynamic-resource-id>", schemaName: "<schema-name>"});               
 					**/ 				
                     get: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
 					/**
 					* Parses update permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.			
 					* @method permissions.update       
-					* @example baasicDynamicResourceRouteService.permissions.update.expand({id: "resourceId", schemaName: "schemaName"});               
+					* @example baasicDynamicResourceRouteService.permissions.update.expand({id: "<dynamic-resource-id>", schemaName: "<schema-name>"});
 					**/ 					
                     update: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
 					/**
@@ -61,7 +61,7 @@
 					* - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified user and article resource.
 					* - `user` - A value which uniquely identifies user for which ACL policy needs to be removed.					
 					* @method permissions.deleteByUser       
-					* @example baasicDynamicResourceRouteService.permissions.deleteByUser.expand({schemaName: "schemaName", id: "resourceId", accessAction: "read", user: "username"});               
+					* @example baasicDynamicResourceRouteService.permissions.deleteByUser.expand({schemaName: "<schema-name>", id: "<dynamic-resource-id>", accessAction: "<access-action>", user: "<username>"});
 					**/ 						
                     deleteByUser: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/users/{user}/"),
 					/**
@@ -71,7 +71,7 @@
 					* - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified role and article resource.
 					* - `role` - A value which uniquely identifies role for which ACL policy needs to be removed.					
 					* @method permissions.deleteByRole       
-					* @example baasicDynamicResourceRouteService.permissions.deleteByRole.expand({schemaName: "schemaName", id: "resourceId", accessAction: "read", role: "roleName"});               
+					* @example baasicDynamicResourceRouteService.permissions.deleteByRole.expand({schemaName: "<schema-name>", id: "<dynamic-resource-id>", accessAction: "<access-action>", role: "<role-name>"});
 					**/ 					
                     deleteByRole: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/roles/{role}/")
                 }
