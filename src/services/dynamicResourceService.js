@@ -12,14 +12,14 @@
             return {
                 routeService: dynamicResourceRouteService,
                  /**
-                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resources.
+                 * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resources matching the given criteria.
                  * @method        
                  * @example 
 baasicDynamicResourceService.find({
   pageNumber : 1,
   pageSize : 10,
-  orderBy : "dateCreated",
-  orderDirection : "desc",
+  orderBy : "<dateCreated>",
+  orderDirection : "<desc>",
   search : "<search-phrase>"
 })
 .success(function (collection) {
@@ -33,7 +33,7 @@ baasicDynamicResourceService.find({
                     return baasicApiHttp.get(dynamicResourceRouteService.find.expand(baasicApiService.findParams(angular.extend({ schemaName: schemaName }, options))));
                 },
                  /**
-                 * Returns a promise that is resolved once the get action has been performed. Success response returns the dynamic resource.
+                 * Returns a promise that is resolved once the get action has been performed. Success response returns the specified dynamic resource.
                  * @method        
                  * @example 
 baasicDynamicResourceService.get("<schema-Nnme>", "<dynamic-resource-id>")
@@ -48,7 +48,7 @@ baasicDynamicResourceService.get("<schema-Nnme>", "<dynamic-resource-id>")
                     return baasicApiHttp.get(dynamicResourceRouteService.get.expand(baasicApiService.getParams(id, angular.extend({ schemaName: schemaName }, options))));
                 },
                  /**
-                 * Returns a promise that is resolved once the create dynamic resource action has been performed.
+                 * Returns a promise that is resolved once the create dynamic resource action has been performed, this action creates a new dynamic resource item.
                  * @method        
                  * @example 
 baasicDynamicResourceService.create({
@@ -67,7 +67,11 @@ baasicDynamicResourceService.create({
                     return baasicApiHttp.post(dynamicResourceRouteService.create.expand(params), baasicApiService.createParams(params)[baasicConstants.modelPropertyName]);
                 },
                  /**
-                 * Returns a promise that is resolved once the update action has been performed.
+                 * Returns a promise that is resolved once the update action has been performed, this action updates a dynamic resource item. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `update` route can be obtained from dynamic resource (HAL enabled) objects like this:
+```
+var params = baasicApiService.removeParams(dynamicResourceObject);
+var uri = params["model"].links('put').href;
+```
                  * @method        
                  * @example 
 // Existing resource is a resource previously fetched using get action.
@@ -85,7 +89,11 @@ baasicDynamicResourceService.update(existingResource)
                     return baasicApiHttp.put(params[baasicConstants.modelPropertyName].links('put').href, params[baasicConstants.modelPropertyName]);
                 },
                  /**
-                 * Returns a promise that is resolved once the patch action has been performed.
+                 * Returns a promise that is resolved once the patch action has been performed, this action patches an existing dynamic resource. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `patch` route can be obtained from dynamic resource (HAL enabled) objects like this:
+```
+var params = baasicApiService.removeParams(dynamicResourceObject);
+var uri = params["model"].links('patch').href;
+```
                  * @method        
                  * @example 
 // Existing resource is a resource previously fetched using get action.
@@ -104,7 +112,11 @@ baasicDynamicResourceService.update(existingResource)
                     return baasicApiHttp.put(params[baasicConstants.modelPropertyName].links('patch').href, params[baasicConstants.modelPropertyName]);
                 },
                  /**
-                 * Returns a promise that is resolved once the remove action has been performed. If the action is successfully completed the dynamic resource is permanently removed from the system.
+                 * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource from the system if successfully completed. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `remove` route can be obtained from dynamic resource (HAL enabled) objects like this:
+```
+var params = baasicApiService.removeParams(dynamicResourceObject);
+var uri = params["model"].links('delete').href;
+```
                  * @method        
                  * @example 
 // Existing resource is a resource previously fetched using get action.				 
@@ -122,7 +134,7 @@ baasicDynamicResourceService.remove(existingResource)
                 },
                 permissions: {
                     /**
-                    * Returns a promise that is resolved once the get action has been performed. Success response returns a list of permissions.
+                    * Returns a promise that is resolved once the get action has been performed. Success response returns a list of dynamic resource permissions.
                     * @method permissions.get       
                     * @example 
 baasicDynamicResourceService.permissions.get({id: "<dynamic-resource-id>", schemaName: "<schema-name>"})
@@ -138,7 +150,7 @@ baasicDynamicResourceService.permissions.get({id: "<dynamic-resource-id>", schem
                         return baasicApiHttp.get(dynamicResourceRouteService.permissions.get.expand(params));
                     },
                     /**
-                    * Returns a promise that is resolved once the update permissions action has been performed.
+                    * Returns a promise that is resolved once the update permissions action has been performed, this action updates dynamic resource permissions.
                     * @method permissions.update      
                     * @example 
 // Existing resource is a resource previously fetched using get action.
