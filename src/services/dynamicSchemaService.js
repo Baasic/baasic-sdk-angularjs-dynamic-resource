@@ -13,7 +13,7 @@
                 /**
                 * Provides direct access to `baasicDynamicSchemaRouteService`.
                 * @method        
-                * @example baasicDynamicSchemaRouteService.routeService.get.expand(expandObject);
+                * @example baasicDynamicSchemaService.routeService.get.expand(expandObject);
                 **/                
                 routeService: dynamicSchemaRouteService,
                  /**

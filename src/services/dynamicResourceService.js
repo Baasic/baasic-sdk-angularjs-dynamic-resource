@@ -13,7 +13,7 @@
                 /**
                 * Provides direct access to `baasicDynamicResourceRouteService`.
                 * @method        
-                * @example baasicDynamicResourceRouteService.routeService.get.expand(expandObject);
+                * @example baasicDynamicResourceService.routeService.get.expand(expandObject);
                 **/              
                 routeService: dynamicResourceRouteService,
                  /**
