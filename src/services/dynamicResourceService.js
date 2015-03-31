@@ -1,9 +1,9 @@
 ﻿/**
  * @module baasicDynamicResourceService
  * @description Baasic Dynamic Resource Service provides an easy way to consume Baasic Dynamic Resource REST API.
- * @copyright (c) 2015 Mono-Software
+ * @copyright (c) 2015 Mono
  * @license MIT
- * @author Mono-Software
+ * @author Mono
 */
 (function (angular, module, undefined) {
     "use strict";

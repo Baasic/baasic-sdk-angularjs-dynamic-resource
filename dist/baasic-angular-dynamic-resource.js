@@ -1,9 +1,9 @@
 (function (angular, undefined) {
     /** 
      * @description The angular.module is a global place for creating, registering or retrieving modules. All modules should be registered in an application using this mechanism. An angular module is a container for the different parts of your app - services, directives etc. In order to use `baasic.dynamicResource` module functionality it must be added as a dependency to your app.
-     * @copyright (c) 2015 Mono-Software
+     * @copyright (c) 2015 Mono
      * @license MIT
-     * @author Mono-Software
+     * @author Mono
      * @module baasic.dynamicResource 
      * @example
      (function (Main) {
@@ -29,9 +29,9 @@
     /**
      * @module baasicDynamicResourceRouteService
      * @description Baasic Dynamic Resource Route Service provides Baasic route templates which can then be expanded to Baasic REST URI's through the [URI Template](https://github.com/Baasic/uritemplate-js) by providing it with an object that contains URI parameters. For example `baasicDynamicResourceRouteService` uses `baasicDynamicResourceRouteService` to obtain a part of needed routes while the other part is obtained through HAL. Route services by convention use the same function names as their corresponding services.
-     * @copyright (c) 2015 Mono-Software
+     * @copyright (c) 2015 Mono
      * @license MIT
-     * @author Mono-Software
+     * @author Mono
      */
     (function (angular, module, undefined) {
         "use strict";
@@ -109,9 +109,9 @@
     /**
      * @module baasicDynamicResourceService
      * @description Baasic Dynamic Resource Service provides an easy way to consume Baasic Dynamic Resource REST API.
-     * @copyright (c) 2015 Mono-Software
+     * @copyright (c) 2015 Mono
      * @license MIT
-     * @author Mono-Software
+     * @author Mono
      */
     (function (angular, module, undefined) {
         "use strict";
@@ -323,9 +323,9 @@
     /**
      * @module baasicDynamicSchemaRouteService
      * @description Baasic Dynamic Schema Route Service provides Baasic route templates which can then be expanded to Baasic REST URI's through the [URI Template](https://github.com/Baasic/uritemplate-js) by providing it with an object that contains URI parameters. For example `baasicDynamicResourceService` uses `baasicDynamicResourceRouteService` to obtain a part of needed routes while the other part is obtained through HAL. Route services by convention use the same function names as their corresponding services.
-     * @copyright (c) 2015 Mono-Software
+     * @copyright (c) 2015 Mono
      * @license MIT
-     * @author Mono-Software
+     * @author Mono
      */
 
     (function (angular, module, undefined) {
@@ -374,9 +374,9 @@
     /**
      * @module baasicDynamicSchemaService
      * @description Baasic Dynamic Schema Service provides an easy way to consume Baasic Dynamic-Schema REST routes. `baasicDynamicSchemaService` functions are not bound to particular dynamic resource schema items but are meant to be used on dynamic resources directly.
-     * @copyright (c) 2015 Mono-Software
+     * @copyright (c) 2015 Mono
      * @license MIT
-     * @author Mono-Software
+     * @author Mono
      */
     (function (angular, module, undefined) {
         "use strict";
