@@ -10,6 +10,11 @@
     module.service("baasicDynamicSchemaService", ["baasicApiHttp", "baasicApiService", "baasicConstants", "baasicDynamicSchemaRouteService",
         function (baasicApiHttp, baasicApiService, baasicConstants, dynamicSchemaRouteService) {
             return {
+                /**
+                * Provides direct access to `baasicDynamicSchemaRouteService`.
+                * @method        
+                * @example baasicDynamicSchemaRouteService.routeService.get.expand(expandObject);
+                **/                
                 routeService: dynamicSchemaRouteService,
                  /**
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resource schemas matching the given criteria.

@@ -117,6 +117,11 @@
         "use strict";
         module.service("baasicDynamicResourceService", ["baasicApiHttp", "baasicApiService", "baasicConstants", "baasicDynamicResourceRouteService", function (baasicApiHttp, baasicApiService, baasicConstants, dynamicResourceRouteService) {
             return {
+                /**
+                 * Provides direct access to `baasicDynamicResourceRouteService`.
+                 * @method        
+                 * @example baasicDynamicResourceRouteService.routeService.get.expand(expandObject);
+                 **/
                 routeService: dynamicResourceRouteService,
                 /**
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resources matching the given criteria.
@@ -382,6 +387,11 @@
         "use strict";
         module.service("baasicDynamicSchemaService", ["baasicApiHttp", "baasicApiService", "baasicConstants", "baasicDynamicSchemaRouteService", function (baasicApiHttp, baasicApiService, baasicConstants, dynamicSchemaRouteService) {
             return {
+                /**
+                 * Provides direct access to `baasicDynamicSchemaRouteService`.
+                 * @method        
+                 * @example baasicDynamicSchemaRouteService.routeService.get.expand(expandObject);
+                 **/
                 routeService: dynamicSchemaRouteService,
                 /**
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resource schemas matching the given criteria.
