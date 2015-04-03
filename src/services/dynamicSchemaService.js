@@ -23,9 +23,9 @@
 baasicDynamicSchemaService.find({
   pageNumber : 1,
   pageSize : 10,
-  orderBy : "<name>",
-  orderDirection : "<asc|desc>",
-  search : "<search-phrase>"
+  orderBy : '<name>',
+  orderDirection : '<asc|desc>',
+  search : '<search-phrase>'
 })
 .success(function (collection) {
   // perform success action here
@@ -41,7 +41,7 @@ baasicDynamicSchemaService.find({
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the specified dynamic resource schema.
                  * @method        
                  * @example 
-baasicDynamicSchemaService.get("<schema-name>")
+baasicDynamicSchemaService.get('<schema-name>')
 .success(function (data) {
   // perform success action here
 })
@@ -58,21 +58,21 @@ baasicDynamicSchemaService.get("<schema-name>")
                 * @example 
 baasicDynamicSchemaService.create({
   schema : {
-    type : "object",
+    type : 'object',
     properties : {
       id : {
-        title : "<unique-identifier-field>",
+        title : '<unique-identifier-field>',
         readonly : true,
         hidden : true,
-        type : "string"
+        type : 'string'
       },
       description : {
         type: string
       }
     }
   },
-  name : "<schema-name>",
-  description : "<description>",
+  name : '<schema-name>',
+  description : '<description>',
   enforceSchemaValidation : true
 })
 .success(function (data) {
@@ -89,12 +89,12 @@ baasicDynamicSchemaService.create({
                  * Returns a promise that is resolved once the update dynamic resource schema action has been performed, this action updates a dynamic resource schema item. This function doesn't use `baasicDynamicSchemaRouteService` for obtaining route templates, however `update` route can be obtained from dynamic schema resource (HAL enabled) objects like this:
 ```
 var params = baasicApiService.removeParams(dynamicSchemaResource);
-var uri = params["model"].links('put').href;
+var uri = params['model'].links('put').href;
 ```
                  * @method        
                  * @example 
 // Existing resource is a resource previously fetched using get action.
-dynamicSchemaResource.description = "<description>";
+dynamicSchemaResource.description = '<description>';
 baasicDynamicSchemaService.update(dynamicSchemaResource)
 .success(function (data) {
   // perform success action here
@@ -111,7 +111,7 @@ baasicDynamicSchemaService.update(dynamicSchemaResource)
                 * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource schema item from the system if successfully completed. This function doesn't use `baasicDynamicSchemaRouteService` for obtaining route templates, however `remnove` route can be obtained from dynamic schema resource (HAL enabled) objects like this:
 ```
 var params = baasicApiService.removeParams(dynamicSchemaResource);
-var uri = params["model"].links('delete').href;
+var uri = params['model'].links('delete').href;
 ```
                 * @method        
                 * @example 
@@ -134,8 +134,8 @@ baasicDynamicSchemaService.remove(dynamicSchemaResource)
                 * @example 
 // Existing resource is a resource previously fetched using get action.				 
 baasicDynamicSchemaService.generate({
-  id : "<schema-Id>",
-  description : "<description>"
+  id : '<schema-Id>',
+  description : '<description>'
 })
 .success(function (data) {
   // perform success action here
