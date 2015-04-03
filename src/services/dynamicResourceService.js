@@ -20,12 +20,12 @@
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resources matching the given criteria.
                  * @method        
                  * @example 
-baasicDynamicResourceService.find("<schema-name>", {
+baasicDynamicResourceService.find('<schema-name>', {
   pageNumber : 1,
   pageSize : 10,
-  orderBy : "<dateCreated>",
-  orderDirection : "<asc|desc>",
-  search : "<search-phrase>"
+  orderBy : '<dateCreated>',
+  orderDirection : '<asc|desc>',
+  search : '<search-phrase>'
 })
 .success(function (collection) {
   // perform success action here
@@ -41,7 +41,7 @@ baasicDynamicResourceService.find("<schema-name>", {
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the specified dynamic resource.
                  * @method        
                  * @example 
-baasicDynamicResourceService.get("<schema-name>", "<dynamic-resource-id>")
+baasicDynamicResourceService.get('<schema-name>', '<dynamic-resource-id>')
 .success(function (data) {
   // perform success action here
 })
@@ -56,9 +56,9 @@ baasicDynamicResourceService.get("<schema-name>", "<dynamic-resource-id>")
                  * Returns a promise that is resolved once the create dynamic resource action has been performed, this action creates a new dynamic resource item.
                  * @method        
                  * @example 
-baasicDynamicResourceService.create("<schema-name>", {
-  id : "",
-  description : "<description>"  
+baasicDynamicResourceService.create('<schema-name>', {
+  id : '',
+  description : '<description>'  
 })
 .success(function (data) {
   // perform success action here
@@ -75,7 +75,7 @@ baasicDynamicResourceService.create("<schema-name>", {
                  * Returns a promise that is resolved once the update action has been performed, this action updates a dynamic resource item. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `update` route can be obtained from dynamic resource (HAL enabled) objects like this:
 ```
 var params = baasicApiService.removeParams(dynamicResource);
-var uri = params["model"].links('put').href;
+var uri = params['model'].links('put').href;
 ```
                  * @method        
                  * @example 
@@ -97,7 +97,7 @@ baasicDynamicResourceService.update(dynamicResource)
                  * Returns a promise that is resolved once the patch action has been performed, this action patches an existing dynamic resource. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `patch` route can be obtained from dynamic resource (HAL enabled) objects like this:
 ```
 var params = baasicApiService.removeParams(dynamicResource);
-var uri = params["model"].links('patch').href;
+var uri = params['model'].links('patch').href;
 ```
                  * @method        
                  * @example 
@@ -120,7 +120,7 @@ baasicDynamicResourceService.update(dynamicResource)
                  * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource from the system if successfully completed. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `remove` route can be obtained from dynamic resource (HAL enabled) objects like this:
 ```
 var params = baasicApiService.removeParams(dynamicResource);
-var uri = params["model"].links('delete').href;
+var uri = params['model'].links('delete').href;
 ```
                  * @method        
                  * @example 
@@ -142,7 +142,7 @@ baasicDynamicResourceService.remove(dynamicResource)
                     * Returns a promise that is resolved once the get action has been performed. Success response returns a list of dynamic resource permissions.
                     * @method permissions.get       
                     * @example 
-baasicDynamicResourceService.permissions.get({id: "<dynamic-resource-id>", schemaName: "<schema-name>"})
+baasicDynamicResourceService.permissions.get({id: '<dynamic-resource-id>', schemaName: '<schema-name>'})
 .success(function (data) {
   // perform success action here
 })
@@ -176,7 +176,7 @@ baasicDynamicResourceService.permissions.update(dynamicResource)
                     * @method permissions.update      
                     * @example 
 // Existing resource is a resource previously fetched using get action.					
-baasicDynamicResourceService.permissions.removeByUser("<access-action>", "<username>", dynamicResource)
+baasicDynamicResourceService.permissions.removeByUser('<access-action>', '<username>', dynamicResource)
 .success(function (data) {
   // perform success action here
 })
@@ -195,7 +195,7 @@ baasicDynamicResourceService.permissions.removeByUser("<access-action>", "<usern
                     * @method permissions.update      
                     * @example 
 // Existing resource is a resource previously fetched using get action.						
-baasicDynamicResourceService.permissions.removeByRole("<access-action>", "<role-name>", dynamicResource)
+baasicDynamicResourceService.permissions.removeByRole('<access-action>', '<role-name>', dynamicResource)
 .success(function (data) {
   // perform success action here
 })
