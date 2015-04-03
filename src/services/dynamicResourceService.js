@@ -69,7 +69,7 @@ baasicDynamicResourceService.create('<schema-name>', {
                     return baasicApiHttp.post(dynamicResourceRouteService.create.expand(params), baasicApiService.createParams(params)[baasicConstants.modelPropertyName]);
                 },
                  /**
-                 * Returns a promise that is resolved once the update action has been performed, this action updates a dynamic resource item. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `update` route can be obtained from dynamic resource (HAL enabled) objects like this:
+                 * Returns a promise that is resolved once the update action has been performed, this action updates a dynamic resource item. This route uses HAL enabled objects to obtain routes and therefore it doesn't use `baasicDynamicResourceRouteService` route template, here is an example of how a route can be obtained from HAL enabled objects:
 ```
 var params = baasicApiService.removeParams(dynamicResource);
 var uri = params['model'].links('put').href;
@@ -91,7 +91,7 @@ baasicDynamicResourceService.update(dynamicResource)
                     return baasicApiHttp.put(params[baasicConstants.modelPropertyName].links('put').href, params[baasicConstants.modelPropertyName]);
                 },
                  /**
-                 * Returns a promise that is resolved once the patch action has been performed, this action patches an existing dynamic resource. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `patch` route can be obtained from dynamic resource (HAL enabled) objects like this:
+                 * Returns a promise that is resolved once the patch action has been performed, this action patches an existing dynamic resource. This route uses HAL enabled objects to obtain routes and therefore it doesn't use `baasicDynamicResourceRouteService` route template, here is an example of how a route can be obtained from HAL enabled objects:
 ```
 var params = baasicApiService.removeParams(dynamicResource);
 var uri = params['model'].links('patch').href;
@@ -114,7 +114,7 @@ baasicDynamicResourceService.update(dynamicResource)
                     return baasicApiHttp.put(params[baasicConstants.modelPropertyName].links('patch').href, params[baasicConstants.modelPropertyName]);
                 },
                  /**
-                 * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource from the system if successfully completed. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `remove` route can be obtained from dynamic resource (HAL enabled) objects like this:
+                 * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource from the system if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't use `baasicDynamicResourceRouteService` route template, here is an example of how a route can be obtained from HAL enabled objects:
 ```
 var params = baasicApiService.removeParams(dynamicResource);
 var uri = params['model'].links('delete').href;

@@ -83,7 +83,7 @@ baasicDynamicSchemaService.create({
                     return baasicApiHttp.post(dynamicSchemaRouteService.create.expand({}), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
                 },
                  /**
-                 * Returns a promise that is resolved once the update dynamic resource schema action has been performed, this action updates a dynamic resource schema item. This function doesn't use `baasicDynamicSchemaRouteService` for obtaining route templates, however `update` route can be obtained from dynamic schema resource (HAL enabled) objects like this:
+                 * Returns a promise that is resolved once the update dynamic resource schema action has been performed, this action updates a dynamic resource schema item. This route uses HAL enabled objects to obtain routes and therefore it doesn't use `baasicDynamicSchemaRouteService` route template, here is an example of how a route can be obtained from HAL enabled objects:
 ```
 var params = baasicApiService.removeParams(dynamicSchemaResource);
 var uri = params['model'].links('put').href;
@@ -105,7 +105,7 @@ baasicDynamicSchemaService.update(dynamicSchemaResource)
                     return baasicApiHttp.put(params[baasicConstants.modelPropertyName].links('put').href, params[baasicConstants.modelPropertyName]);
                 },
                 /**
-                * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource schema item from the system if successfully completed. This function doesn't use `baasicDynamicSchemaRouteService` for obtaining route templates, however `remnove` route can be obtained from dynamic schema resource (HAL enabled) objects like this:
+                * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource schema item from the system if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't use `baasicDynamicSchemaRouteService` route template, here is an example of how a route can be obtained from HAL enabled objects:
 ```
 var params = baasicApiService.removeParams(dynamicSchemaResource);
 var uri = params['model'].links('delete').href;
