@@ -1,6 +1,6 @@
 # Baasic Dynamic-Resource AngularJS SDK
 
-Baasic AngularJS Dynamic-Resource library provides access to dynamic-resource Baasic Service [REST API](https://api.baasic.com/vX).
+Baasic AngularJS Dynamic-Resource library provides access to [Baasic REST API](https://api.baasic.com/beta) dynamic resource end-points.
 
 ## Dependencies
 
@@ -42,4 +42,4 @@ angular.module('my-module', ["baasic.api", "baasic.dynamicResource"])
 * Please [report](../../../baasic-sdk-angularjs-dynamic-resource/issues) any issues you might have found
 * Help us write the documentation
 * Create interesting apps using SDK
-* Looking for something else to do? Get in touch..
+* Looking for something else to do? Get in <u>touch</u> ...

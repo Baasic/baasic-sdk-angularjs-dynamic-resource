@@ -28,7 +28,7 @@
 
     /**
      * @module baasicDynamicResourceRouteService
-     * @description Baasic Dynamic Resource Route Service provides Baasic route templates which can then be expanded to Baasic REST URI's through the [URI Template](https://github.com/Baasic/uritemplate-js) by providing it with an object that contains URI parameters. For example `baasicDynamicResourceRouteService` uses `baasicDynamicResourceRouteService` to obtain a part of needed routes while the other part is obtained through HAL. Route services by convention use the same function names as their corresponding services.
+     * @description Baasic Dynamic Resource Route Service provides Baasic route templates which can be expanded to Baasic REST URI's through the [URI Template](https://github.com/Baasic/uritemplate-js) by providing it with an object that contains URI parameters. For example `baasicDynamicResourceRouteService` uses `baasicDynamicResourceRouteService` to obtain a part of needed routes while the other part is obtained through HAL. Route services by convention use the same function names as their corresponding services.
      * @copyright (c) 2015 Mono
      * @license MIT
      * @author Mono
@@ -127,11 +127,11 @@
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resources matching the given criteria.
                  * @method        
                  * @example 
-                 baasicDynamicResourceService.find({
+                 baasicDynamicResourceService.find("<schema-name>", {
                  pageNumber : 1,
                  pageSize : 10,
                  orderBy : "<dateCreated>",
-                 orderDirection : "<desc>",
+                 orderDirection : "<asc|desc>",
                  search : "<search-phrase>"
                  })
                  .success(function (collection) {
@@ -150,7 +150,7 @@
                  * Returns a promise that is resolved once the get action has been performed. Success response returns the specified dynamic resource.
                  * @method        
                  * @example 
-                 baasicDynamicResourceService.get("<schema-Nnme>", "<dynamic-resource-id>")
+                 baasicDynamicResourceService.get("<schema-name>", "<dynamic-resource-id>")
                  .success(function (data) {
                  // perform success action here
                  })
@@ -167,7 +167,7 @@
                  * Returns a promise that is resolved once the create dynamic resource action has been performed, this action creates a new dynamic resource item.
                  * @method        
                  * @example 
-                 baasicDynamicResourceService.create({
+                 baasicDynamicResourceService.create("<schema-name>", {
                  id : "",
                  description : "<description>"  
                  })
@@ -185,14 +185,14 @@
                 /**
                  * Returns a promise that is resolved once the update action has been performed, this action updates a dynamic resource item. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `update` route can be obtained from dynamic resource (HAL enabled) objects like this:
                  ```
-                 var params = baasicApiService.removeParams(dynamicResourceObject);
+                 var params = baasicApiService.removeParams(dynamicResource);
                  var uri = params["model"].links('put').href;
                  ```
                  * @method        
                  * @example 
                  // Existing resource is a resource previously fetched using get action.
-                 existingResource.description = '<description>';
-                 baasicDynamicResourceService.update(existingResource)
+                 dynamicResource.description = '<description>';
+                 baasicDynamicResourceService.update(dynamicResource)
                  .success(function (data) {
                  // perform success action here
                  })
@@ -207,15 +207,15 @@
                 /**
                  * Returns a promise that is resolved once the patch action has been performed, this action patches an existing dynamic resource. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `patch` route can be obtained from dynamic resource (HAL enabled) objects like this:
                  ```
-                 var params = baasicApiService.removeParams(dynamicResourceObject);
+                 var params = baasicApiService.removeParams(dynamicResource);
                  var uri = params["model"].links('patch').href;
                  ```
                  * @method        
                  * @example 
                  // Existing resource is a resource previously fetched using get action.
-                 existingResource.description = '<new-description>';
-                 existingResource.newField = '<newfield-value>';
-                 baasicDynamicResourceService.update(existingResource)
+                 dynamicResource.description = '<new-description>';
+                 dynamicResource.newField = '<newfield-value>';
+                 baasicDynamicResourceService.update(dynamicResource)
                  .success(function (data) {
                  // perform success action here
                  })
@@ -230,13 +230,13 @@
                 /**
                  * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource from the system if successfully completed. This function doesn't use `baasicDynamicResourceRouteService` for obtaining route templates, however `remove` route can be obtained from dynamic resource (HAL enabled) objects like this:
                  ```
-                 var params = baasicApiService.removeParams(dynamicResourceObject);
+                 var params = baasicApiService.removeParams(dynamicResource);
                  var uri = params["model"].links('delete').href;
                  ```
                  * @method        
                  * @example 
                  // Existing resource is a resource previously fetched using get action.
-                 baasicDynamicResourceService.remove(existingResource)
+                 baasicDynamicResourceService.remove(dynamicResource)
                  .success(function (data) {
                  // perform success action here
                  })
@@ -270,7 +270,7 @@
                      * @method permissions.update      
                      * @example 
                      // Existing resource is a resource previously fetched using get action.
-                     baasicDynamicResourceService.permissions.update(existingResource)
+                     baasicDynamicResourceService.permissions.update(dynamicResource)
                      .success(function (data) {
                      // perform success action here
                      })
@@ -287,7 +287,7 @@
                      * @method permissions.update      
                      * @example 
                      // Existing resource is a resource previously fetched using get action.
-                     baasicDynamicResourceService.permissions.removeByUser("<access-action>", "<username>", existingResource)
+                     baasicDynamicResourceService.permissions.removeByUser("<access-action>", "<username>", dynamicResource)
                      .success(function (data) {
                      // perform success action here
                      })
@@ -306,7 +306,7 @@
                      * @method permissions.update      
                      * @example 
                      // Existing resource is a resource previously fetched using get action.
-                     baasicDynamicResourceService.permissions.removeByRole("<access-action>", "<role-name>", existingResource)
+                     baasicDynamicResourceService.permissions.removeByRole("<access-action>", "<role-name>", dynamicResource)
                      .success(function (data) {
                      // perform success action here
                      })
@@ -327,7 +327,7 @@
 
     /**
      * @module baasicDynamicSchemaRouteService
-     * @description Baasic Dynamic Schema Route Service provides Baasic route templates which can then be expanded to Baasic REST URI's through the [URI Template](https://github.com/Baasic/uritemplate-js) by providing it with an object that contains URI parameters. For example `baasicDynamicResourceService` uses `baasicDynamicResourceRouteService` to obtain a part of needed routes while the other part is obtained through HAL. Route services by convention use the same function names as their corresponding services.
+     * @description Baasic Dynamic Schema Route Service provides Baasic route templates which can be expanded to Baasic REST URI's through the [URI Template](https://github.com/Baasic/uritemplate-js) by providing it with an object that contains URI parameters. For example `baasicDynamicResourceService` uses `baasicDynamicResourceRouteService` to obtain a part of needed routes while the other part is obtained through HAL. Route services by convention use the same function names as their corresponding services.
      * @copyright (c) 2015 Mono
      * @license MIT
      * @author Mono
@@ -401,7 +401,7 @@
                  pageNumber : 1,
                  pageSize : 10,
                  orderBy : "<name>",
-                 orderDirection : "<desc>",
+                 orderDirection : "<asc|desc>",
                  search : "<search-phrase>"
                  })
                  .success(function (collection) {
@@ -465,14 +465,14 @@
                 /**
                  * Returns a promise that is resolved once the update dynamic resource schema action has been performed, this action updates a dynamic resource schema item. This function doesn't use `baasicDynamicSchemaRouteService` for obtaining route templates, however `update` route can be obtained from dynamic schema resource (HAL enabled) objects like this:
                  ```
-                 var params = baasicApiService.removeParams(dynamicSchemaResourceObject);
+                 var params = baasicApiService.removeParams(dynamicSchemaResource);
                  var uri = params["model"].links('put').href;
                  ```
                  * @method        
                  * @example 
                  // Existing resource is a resource previously fetched using get action.
-                 existingResource.description = "<description>";
-                 baasicDynamicSchemaService.update(existingResource)
+                 dynamicSchemaResource.description = "<description>";
+                 baasicDynamicSchemaService.update(dynamicSchemaResource)
                  .success(function (data) {
                  // perform success action here
                  })
@@ -487,13 +487,13 @@
                 /**
                  * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource schema item from the system if successfully completed. This function doesn't use `baasicDynamicSchemaRouteService` for obtaining route templates, however `remnove` route can be obtained from dynamic schema resource (HAL enabled) objects like this:
                  ```
-                 var params = baasicApiService.removeParams(dynamicSchemaResourceObject);
+                 var params = baasicApiService.removeParams(dynamicSchemaResource);
                  var uri = params["model"].links('delete').href;
                  ```
                  * @method        
                  * @example 
                  // Existing resource is a resource previously fetched using get action.
-                 baasicDynamicSchemaService.remove(existingResource)
+                 baasicDynamicSchemaService.remove(dynamicSchemaResource)
                  .success(function (data) {
                  // perform success action here
                  })

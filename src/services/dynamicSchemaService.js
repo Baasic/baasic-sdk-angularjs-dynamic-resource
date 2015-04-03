@@ -24,7 +24,7 @@ baasicDynamicSchemaService.find({
   pageNumber : 1,
   pageSize : 10,
   orderBy : "<name>",
-  orderDirection : "<desc>",
+  orderDirection : "<asc|desc>",
   search : "<search-phrase>"
 })
 .success(function (collection) {
@@ -88,14 +88,14 @@ baasicDynamicSchemaService.create({
                  /**
                  * Returns a promise that is resolved once the update dynamic resource schema action has been performed, this action updates a dynamic resource schema item. This function doesn't use `baasicDynamicSchemaRouteService` for obtaining route templates, however `update` route can be obtained from dynamic schema resource (HAL enabled) objects like this:
 ```
-var params = baasicApiService.removeParams(dynamicSchemaResourceObject);
+var params = baasicApiService.removeParams(dynamicSchemaResource);
 var uri = params["model"].links('put').href;
 ```
                  * @method        
                  * @example 
 // Existing resource is a resource previously fetched using get action.
-existingResource.description = "<description>";
-baasicDynamicSchemaService.update(existingResource)
+dynamicSchemaResource.description = "<description>";
+baasicDynamicSchemaService.update(dynamicSchemaResource)
 .success(function (data) {
   // perform success action here
 })
@@ -110,13 +110,13 @@ baasicDynamicSchemaService.update(existingResource)
                 /**
                 * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource schema item from the system if successfully completed. This function doesn't use `baasicDynamicSchemaRouteService` for obtaining route templates, however `remnove` route can be obtained from dynamic schema resource (HAL enabled) objects like this:
 ```
-var params = baasicApiService.removeParams(dynamicSchemaResourceObject);
+var params = baasicApiService.removeParams(dynamicSchemaResource);
 var uri = params["model"].links('delete').href;
 ```
                 * @method        
                 * @example 
 // Existing resource is a resource previously fetched using get action.				 
-baasicDynamicSchemaService.remove(existingResource)
+baasicDynamicSchemaService.remove(dynamicSchemaResource)
 .success(function (data) {
   // perform success action here
 })
