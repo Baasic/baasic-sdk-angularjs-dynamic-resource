@@ -85,14 +85,14 @@ baasicDynamicSchemaService.create({
                  /**
                  * Returns a promise that is resolved once the update dynamic resource schema action has been performed, this action updates a dynamic resource schema item. This route uses HAL enabled objects to obtain routes and therefore it doesn't use `baasicDynamicSchemaRouteService` route template, here is an example of how a route can be obtained from HAL enabled objects:
 ```
-var params = baasicApiService.removeParams(dynamicSchemaResource);
+var params = baasicApiService.removeParams(dynamicResourceSchema);
 var uri = params['model'].links('put').href;
 ```
                  * @method        
                  * @example 
 // Existing resource is a resource previously fetched using get action.
-dynamicSchemaResource.description = '<description>';
-baasicDynamicSchemaService.update(dynamicSchemaResource)
+dynamicResourceSchema.description = '<description>';
+baasicDynamicSchemaService.update(dynamicResourceSchema)
 .success(function (data) {
   // perform success action here
 })
@@ -107,13 +107,13 @@ baasicDynamicSchemaService.update(dynamicSchemaResource)
                 /**
                 * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource schema item from the system if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't use `baasicDynamicSchemaRouteService` route template, here is an example of how a route can be obtained from HAL enabled objects:
 ```
-var params = baasicApiService.removeParams(dynamicSchemaResource);
+var params = baasicApiService.removeParams(dynamicResourceSchema);
 var uri = params['model'].links('delete').href;
 ```
                 * @method        
                 * @example 
 // Existing resource is a resource previously fetched using get action.				 
-baasicDynamicSchemaService.remove(dynamicSchemaResource)
+baasicDynamicSchemaService.remove(dynamicResourceSchema)
 .success(function (data) {
   // perform success action here
 })
