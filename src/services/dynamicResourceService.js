@@ -1,9 +1,6 @@
 ﻿/**
  * @module baasicDynamicResourceService
- * @description Baasic Dynamic Resource Service provides an easy way to consume Baasic Dynamic Resource REST API.
- * @copyright (c) 2015 Mono
- * @license MIT
- * @author Mono
+ * @description Baasic Dynamic Resource Service provides an easy way to consume Baasic Dynamic Resource REST API. In order to obtain a needed routes `baasicDynamicResourceService` uses `baasicDynamicResourceRouteService`.
 */
 (function (angular, module, undefined) {
     "use strict";
@@ -213,3 +210,12 @@ baasicDynamicResourceService.permissions.removeByRole('<access-action>', '<role-
             };
         }]);
 }(angular, module));
+/**
+ * @copyright (c) 2015 Mono
+ * @license MIT
+ * @author Mono
+ * @overview 
+ ***Notes:**
+ - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about Baasic REST API end-points.
+ - All end-point objects are transformed by the associated route service.
+*/
