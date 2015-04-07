@@ -50,7 +50,7 @@ baasicDynamicSchemaService.get('<schema-name>')
                     return baasicApiHttp.get(dynamicSchemaRouteService.get.expand(baasicApiService.getParams(name, options, 'name')));
                 },
                 /**
-                * Returns a promise that is resolved once the create action has been performed, this action creates a new dynamic resource schema item.
+                * Returns a promise that is resolved once the create action has been performed; this action creates a new dynamic resource schema item.
                 * @method        
                 * @example 
 baasicDynamicSchemaService.create({
@@ -83,14 +83,14 @@ baasicDynamicSchemaService.create({
                     return baasicApiHttp.post(dynamicSchemaRouteService.create.expand({}), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
                 },
                  /**
-                 * Returns a promise that is resolved once the update dynamic resource schema action has been performed, this action updates a dynamic resource schema item. This route uses HAL enabled objects to obtain routes and therefore it doesn't use `baasicDynamicSchemaRouteService` route template, here is an example of how a route can be obtained from HAL enabled objects:
+                 * Returns a promise that is resolved once the update dynamic resource schema action has been performed; this action updates a dynamic resource schema item. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicDynamicSchemaRouteService` route template. Here is an example of how a route can be obtained from HAL enabled objects:
 ```
 var params = baasicApiService.removeParams(dynamicResourceSchema);
 var uri = params['model'].links('put').href;
 ```
                  * @method        
                  * @example 
-// Existing resource is a resource previously fetched using get action.
+// dynamicResourceSchema is a resource previously fetched using get action.
 dynamicResourceSchema.description = '<description>';
 baasicDynamicSchemaService.update(dynamicResourceSchema)
 .success(function (data) {
@@ -105,14 +105,14 @@ baasicDynamicSchemaService.update(dynamicResourceSchema)
                     return baasicApiHttp.put(params[baasicConstants.modelPropertyName].links('put').href, params[baasicConstants.modelPropertyName]);
                 },
                 /**
-                * Returns a promise that is resolved once the remove action has been performed. This action removes a dynamic resource schema item from the system if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't use `baasicDynamicSchemaRouteService` route template, here is an example of how a route can be obtained from HAL enabled objects:
+                * Returns a promise that is resolved once the remove action has been performed. This action will remove a dynamic resource schema item from the system if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicDynamicSchemaRouteService` route template. Here is an example of how a route can be obtained from HAL enabled objects:
 ```
 var params = baasicApiService.removeParams(dynamicResourceSchema);
 var uri = params['model'].links('delete').href;
 ```
                 * @method        
                 * @example 
-// Existing resource is a resource previously fetched using get action.				 
+// dynamicResourceSchema is a resource previously fetched using get action.				 
 baasicDynamicSchemaService.remove(dynamicResourceSchema)
 .success(function (data) {
   // perform success action here
@@ -126,10 +126,9 @@ baasicDynamicSchemaService.remove(dynamicResourceSchema)
                     return baasicApiHttp.delete(params[baasicConstants.modelPropertyName].links('delete').href);
                 },
                 /**
-                * Returns a promise that is resolved once the generate schema action has been performed. Success response returns a schema generated based on json input.
+                * Returns a promise that is resolved once the generate schema action has been performed. Success response returns a schema generated based on the json input.
                 * @method        
-                * @example 
-// Existing resource is a resource previously fetched using get action.				 
+                * @example 			 
 baasicDynamicSchemaService.generate({
   id : '<schema-Id>',
   description : '<description>'
@@ -153,6 +152,6 @@ baasicDynamicSchemaService.generate({
  * @author Mono
  * @overview 
  ***Notes:**
- - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about Baasic REST API end-points.
+ - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
  - All end-point objects are transformed by the associated route service.
 */
