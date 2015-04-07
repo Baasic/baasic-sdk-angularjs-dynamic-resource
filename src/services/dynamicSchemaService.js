@@ -1,6 +1,6 @@
 ﻿/**
  * @module baasicDynamicSchemaService
- * @description Baasic Dynamic Schema Service provides an easy way to consume Baasic Dynamic-Schema REST routes. `baasicDynamicSchemaService` functions are not bound to particular dynamic resource schema items but are meant to be used on dynamic resources directly. In order to obtain a needed routes `baasicDynamicSchemaService` uses `baasicDynamicSchemaRouteService`.
+ * @description Baasic Dynamic Schema Service provides an easy way to consume Baasic Dynamic-Schema REST routes. In order to obtain a needed routes `baasicDynamicSchemaService` uses `baasicDynamicSchemaRouteService`.
 */
 (function (angular, module, undefined) {
     "use strict";

@@ -155,8 +155,7 @@ baasicDynamicResourceService.permissions.get({id: '<dynamic-resource-id>', schem
                     * Returns a promise that is resolved once the update permissions action has been performed; this action updates dynamic resource permissions.
                     * @method permissions.update      
                     * @example 
-// dynamicResource is a resource previously fetched using get action.
-baasicDynamicResourceService.permissions.update(dynamicResource)
+baasicDynamicResourceService.permissions.update({id: '<dynamic-resource-id>', schemaName: '<schema-name>'})
 .success(function (data) {
   // perform success action here
 })
