@@ -1,18 +1,12 @@
 ﻿/**
  * @module baasicDynamicSchemaService
- * @description Baasic Dynamic Schema Service provides an easy way to consume Baasic Dynamic-Schema REST routes. In order to obtain a needed routes `baasicDynamicSchemaService` uses `baasicDynamicSchemaRouteService`.
+ * @description Baasic Dynamic Schema Service provides an easy way to consume Baasic Dynamic Schema REST API end-points. In order to obtain a needed routes `baasicDynamicSchemaService` uses `baasicDynamicSchemaRouteService`.
 */
 (function (angular, module, undefined) {
     "use strict";
     module.service("baasicDynamicSchemaService", ["baasicApiHttp", "baasicApiService", "baasicConstants", "baasicDynamicSchemaRouteService",
         function (baasicApiHttp, baasicApiService, baasicConstants, dynamicSchemaRouteService) {
             return {
-                /**
-                * Provides direct access to `baasicDynamicSchemaRouteService`.
-                * @method        
-                * @example baasicDynamicSchemaService.routeService.get.expand(expandObject);
-                **/                
-                routeService: dynamicSchemaRouteService,
                  /**
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resource schemas matching the given criteria.
                  * @method        
@@ -20,7 +14,7 @@
 baasicDynamicSchemaService.find({
   pageNumber : 1,
   pageSize : 10,
-  orderBy : '<name>',
+  orderBy : '<field>',
   orderDirection : '<asc|desc>',
   search : '<search-phrase>'
 })
@@ -142,7 +136,13 @@ baasicDynamicSchemaService.generate({
 				**/					
                 generate: function (data) {
                     return baasicApiHttp.post(dynamicSchemaRouteService.generate.expand({}), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
-                }
+                },
+                /**
+                * Provides direct access to `baasicDynamicSchemaRouteService`.
+                * @method        
+                * @example baasicDynamicSchemaService.routeService.get.expand(expandObject);
+                **/                
+                routeService: dynamicSchemaRouteService
             };
         }]);
 }(angular, module));

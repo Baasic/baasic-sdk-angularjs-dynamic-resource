@@ -1,18 +1,12 @@
 ﻿/**
  * @module baasicDynamicResourceService
- * @description Baasic Dynamic Resource Service provides an easy way to consume Baasic Dynamic Resource REST API. In order to obtain a needed routes `baasicDynamicResourceService` uses `baasicDynamicResourceRouteService`.
+ * @description Baasic Dynamic Resource Service provides an easy way to consume Baasic Dynamic Resource REST API end-points. In order to obtain a needed routes `baasicDynamicResourceService` uses `baasicDynamicResourceRouteService`.
 */
 (function (angular, module, undefined) {
     "use strict";
     module.service("baasicDynamicResourceService", ["baasicApiHttp", "baasicApiService", "baasicConstants", "baasicDynamicResourceRouteService",
         function (baasicApiHttp, baasicApiService, baasicConstants, dynamicResourceRouteService) {
             return {
-                /**
-                * Provides direct access to `baasicDynamicResourceRouteService`.
-                * @method        
-                * @example baasicDynamicResourceService.routeService.get.expand(expandObject);
-                **/              
-                routeService: dynamicResourceRouteService,
                  /**
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resources matching the given criteria.
                  * @method        
@@ -20,7 +14,7 @@
 baasicDynamicResourceService.find('<schema-name>', {
   pageNumber : 1,
   pageSize : 10,
-  orderBy : '<dateCreated>',
+  orderBy : '<field>',
   orderDirection : '<asc|desc>',
   search : '<search-phrase>'
 })
@@ -134,6 +128,12 @@ baasicDynamicResourceService.remove(dynamicResource)
                     var params = baasicApiService.removeParams(data);
                     return baasicApiHttp.delete(params[baasicConstants.modelPropertyName].links('delete').href);
                 },
+                /**
+                * Provides direct access to `baasicDynamicResourceRouteService`.
+                * @method        
+                * @example baasicDynamicResourceService.routeService.get.expand(expandObject);
+                **/              
+                routeService: dynamicResourceRouteService,
                 permissions: {
                     /**
                     * Returns a promise that is resolved once the get action has been performed. Success response returns a list of dynamic resource permissions.
@@ -168,7 +168,7 @@ baasicDynamicResourceService.permissions.update({id: '<dynamic-resource-id>', sc
                         return baasicApiHttp.put(dynamicResourceRouteService.permissions.get.expand(params), params[baasicConstants.modelPropertyName]);
                     },
                     /**
-                    * Returns a promise that is resolved once the removeByUser action has been performed. This action deletes all ACL assigned to the specified user and dynamic resource.
+                    * Returns a promise that is resolved once the removeByUser action has been performed. This action deletes ACL policy assigned to the specified user and dynamic resource.
                     * @method permissions.update      
                     * @example 
 // dynamicResource is a resource previously fetched using get action.					
@@ -187,7 +187,7 @@ baasicDynamicResourceService.permissions.removeByUser('<access-action>', '<usern
                         return baasicApiHttp.delete(dynamicResourceRouteService.permissions.deleteByUser.expand(params));
                     },
                     /**
-                    * Returns a promise that is resolved once the removeByRole action has been performed. This action deletes all ACL assigned to the specified role and dynamic resource.
+                    * Returns a promise that is resolved once the removeByRole action has been performed. This action deletes ACL policy assigned to the specified role and dynamic resource.
                     * @method permissions.update      
                     * @example 
 // dynamicResource is a resource previously fetched using get action.						

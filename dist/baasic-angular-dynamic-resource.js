@@ -37,20 +37,28 @@
                 /**
                  * Parses find route which can be expanded with additional options. Supported items are: 
                  * - `schemaName` - Name of the dynamic resource schema.
-                 * - `searchQuery` - A string referencing resource properties using the phrase or query search.
-                 * - `page` - A value used to set the page offset, i.e. to retrieve certain resource subset from the storage.
+                 * - `searchQuery` - A string referencing dynamic resource properties using the phrase or BQL (Baasic Query Language) search.
+                 * - `page` - A value used to set the page number, i.e. to retrieve certain dynamic resource subset from the storage.
                  * - `rpp` - A value used to limit the size of result set per page.
-                 * - `sort` - A string used to set the role property to sort the result collection by.
+                 * - `sort` - A string used to set the dynamic resource property to sort the result collection by.
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
-                 * @example baasicDynamicResourceRouteService.find.expand({schemaName: '<schema-name>', searchQuery: '<search-phrase>'});
+                 * @example 
+                 baasicDynamicResourceRouteService.find.expand({
+                 schemaName: '<schema-name>', 
+                 searchQuery: '<search-phrase>'
+                 });
                  **/
                 find: uriTemplateService.parse("resources/{schemaName}/{?searchQuery,page,rpp,sort,embed,fields}"),
                 /**
                  * Parses get route which must be expanded with the resource name of the previously created dynamic resource schema in the system and the Id of the previously created dynamic resource. Additional expand supported items are:
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
-                 * @example baasicDynamicResourceRouteService.find.expand({schemaName: '<schema-name>', id: '<schema-id>'});               
+                 * @example 
+                 baasicDynamicResourceRouteService.find.expand({
+                 schemaName: '<schema-name>', 
+                 id: '<schema-id>'
+                 });
                  **/
                 get: uriTemplateService.parse("resources/{schemaName}/{id}/{?embed,fields}"),
                 /**
@@ -69,13 +77,21 @@
                     /**
                      * Parses get permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.					
                      * @method permissions.get       
-                     * @example baasicDynamicResourceRouteService.permissions.get.expand({id: '<dynamic-resource-id>', schemaName: '<schema-name>'});               
+                     * @example 
+                     baasicDynamicResourceRouteService.permissions.get.expand({
+                     id: '<dynamic-resource-id>', 
+                     schemaName: '<schema-name>'
+                     });
                      **/
                     get: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
                     /**
                      * Parses update permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.			
                      * @method permissions.update       
-                     * @example baasicDynamicResourceRouteService.permissions.update.expand({id: '<dynamic-resource-id>', schemaName: '<schema-name>'});
+                     * @example 
+                     baasicDynamicResourceRouteService.permissions.update.expand({
+                     id: '<dynamic-resource-id>', 
+                     schemaName: '<schema-name>'
+                     });
                      **/
                     update: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
                     /**
@@ -85,7 +101,13 @@
                      * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified user and article resource.
                      * - `user` - A value which uniquely identifies user for which ACL policy needs to be removed.					
                      * @method permissions.deleteByUser       
-                     * @example baasicDynamicResourceRouteService.permissions.deleteByUser.expand({schemaName: '<schema-name>', id: '<dynamic-resource-id>', accessAction: '<access-action>', user: '<username>'});
+                     * @example 
+                     baasicDynamicResourceRouteService.permissions.deleteByUser.expand({
+                     schemaName: '<schema-name>', 
+                     id: '<dynamic-resource-id>', 
+                     accessAction: '<access-action>', 
+                     user: '<username>'
+                     });
                      **/
                     deleteByUser: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/users/{user}/"),
                     /**
@@ -95,7 +117,13 @@
                      * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified role and article resource.
                      * - `role` - A value which uniquely identifies role for which ACL policy needs to be removed.					
                      * @method permissions.deleteByRole       
-                     * @example baasicDynamicResourceRouteService.permissions.deleteByRole.expand({schemaName: '<schema-name>', id: '<dynamic-resource-id>', accessAction: '<access-action>', role: '<role-name>'});
+                     * @example 
+                     baasicDynamicResourceRouteService.permissions.deleteByRole.expand({
+                     schemaName: '<schema-name>', 
+                     id: '<dynamic-resource-id>', 
+                     accessAction: '<access-action>', 
+                     role: '<role-name>'
+                     });
                      **/
                     deleteByRole: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/roles/{role}/")
                 }
@@ -115,18 +143,12 @@
 
     /**
      * @module baasicDynamicResourceService
-     * @description Baasic Dynamic Resource Service provides an easy way to consume Baasic Dynamic Resource REST API. In order to obtain a needed routes `baasicDynamicResourceService` uses `baasicDynamicResourceRouteService`.
+     * @description Baasic Dynamic Resource Service provides an easy way to consume Baasic Dynamic Resource REST API end-points. In order to obtain a needed routes `baasicDynamicResourceService` uses `baasicDynamicResourceRouteService`.
      */
     (function (angular, module, undefined) {
         "use strict";
         module.service("baasicDynamicResourceService", ["baasicApiHttp", "baasicApiService", "baasicConstants", "baasicDynamicResourceRouteService", function (baasicApiHttp, baasicApiService, baasicConstants, dynamicResourceRouteService) {
             return {
-                /**
-                 * Provides direct access to `baasicDynamicResourceRouteService`.
-                 * @method        
-                 * @example baasicDynamicResourceService.routeService.get.expand(expandObject);
-                 **/
-                routeService: dynamicResourceRouteService,
                 /**
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resources matching the given criteria.
                  * @method        
@@ -134,7 +156,7 @@
                  baasicDynamicResourceService.find('<schema-name>', {
                  pageNumber : 1,
                  pageSize : 10,
-                 orderBy : '<dateCreated>',
+                 orderBy : '<field>',
                  orderDirection : '<asc|desc>',
                  search : '<search-phrase>'
                  })
@@ -252,6 +274,12 @@
                     var params = baasicApiService.removeParams(data);
                     return baasicApiHttp.delete(params[baasicConstants.modelPropertyName].links('delete').href);
                 },
+                /**
+                 * Provides direct access to `baasicDynamicResourceRouteService`.
+                 * @method        
+                 * @example baasicDynamicResourceService.routeService.get.expand(expandObject);
+                 **/
+                routeService: dynamicResourceRouteService,
                 permissions: {
                     /**
                      * Returns a promise that is resolved once the get action has been performed. Success response returns a list of dynamic resource permissions.
@@ -286,7 +314,7 @@
                         return baasicApiHttp.put(dynamicResourceRouteService.permissions.get.expand(params), params[baasicConstants.modelPropertyName]);
                     },
                     /**
-                     * Returns a promise that is resolved once the removeByUser action has been performed. This action deletes all ACL assigned to the specified user and dynamic resource.
+                     * Returns a promise that is resolved once the removeByUser action has been performed. This action deletes ACL policy assigned to the specified user and dynamic resource.
                      * @method permissions.update      
                      * @example 
                      // dynamicResource is a resource previously fetched using get action.
@@ -305,7 +333,7 @@
                         return baasicApiHttp.delete(dynamicResourceRouteService.permissions.deleteByUser.expand(params));
                     },
                     /**
-                     * Returns a promise that is resolved once the removeByRole action has been performed. This action deletes all ACL assigned to the specified role and dynamic resource.
+                     * Returns a promise that is resolved once the removeByRole action has been performed. This action deletes ACL policy assigned to the specified role and dynamic resource.
                      * @method permissions.update      
                      * @example 
                      // dynamicResource is a resource previously fetched using get action.
@@ -348,10 +376,10 @@
             return {
                 /**
                  * Parses find route which can be expanded with additional options. Supported items are: 
-                 * - `searchQuery` - A string referencing resource properties using the phrase or query search.
-                 * - `page` - A value used to set the page offset, i.e. to retrieve certain resource subset from the storage.
+                 * - `searchQuery` - A string referencing dynamic resource schema properties using the phrase or BQL (Baasic Query Language) search.
+                 * - `page` - A value used to set the page number, i.e. to retrieve certain dynamic resource schema subset from the storage.
                  * - `rpp` - A value used to limit the size of result set per page.
-                 * - `sort` - A string used to set the role property to sort the result collection by.
+                 * - `sort` - A string used to set the dynamic resource schema property to sort the result collection by.
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
                  * @example baasicDynamicSchemaRouteService.find.expand({searchQuery: '<search-phrase>'});               
@@ -397,18 +425,12 @@
      */
     /**
      * @module baasicDynamicSchemaService
-     * @description Baasic Dynamic Schema Service provides an easy way to consume Baasic Dynamic-Schema REST routes. In order to obtain a needed routes `baasicDynamicSchemaService` uses `baasicDynamicSchemaRouteService`.
+     * @description Baasic Dynamic Schema Service provides an easy way to consume Baasic Dynamic Schema REST API end-points. In order to obtain a needed routes `baasicDynamicSchemaService` uses `baasicDynamicSchemaRouteService`.
      */
     (function (angular, module, undefined) {
         "use strict";
         module.service("baasicDynamicSchemaService", ["baasicApiHttp", "baasicApiService", "baasicConstants", "baasicDynamicSchemaRouteService", function (baasicApiHttp, baasicApiService, baasicConstants, dynamicSchemaRouteService) {
             return {
-                /**
-                 * Provides direct access to `baasicDynamicSchemaRouteService`.
-                 * @method        
-                 * @example baasicDynamicSchemaService.routeService.get.expand(expandObject);
-                 **/
-                routeService: dynamicSchemaRouteService,
                 /**
                  * Returns a promise that is resolved once the find action has been performed. Success response returns a list of dynamic resource schemas matching the given criteria.
                  * @method        
@@ -416,7 +438,7 @@
                  baasicDynamicSchemaService.find({
                  pageNumber : 1,
                  pageSize : 10,
-                 orderBy : '<name>',
+                 orderBy : '<field>',
                  orderDirection : '<asc|desc>',
                  search : '<search-phrase>'
                  })
@@ -538,7 +560,13 @@
                  **/
                 generate: function (data) {
                     return baasicApiHttp.post(dynamicSchemaRouteService.generate.expand({}), baasicApiService.createParams(data)[baasicConstants.modelPropertyName]);
-                }
+                },
+                /**
+                 * Provides direct access to `baasicDynamicSchemaRouteService`.
+                 * @method        
+                 * @example baasicDynamicSchemaService.routeService.get.expand(expandObject);
+                 **/
+                routeService: dynamicSchemaRouteService
             };
         }]);
     }(angular, module));
