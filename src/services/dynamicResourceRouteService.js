@@ -46,59 +46,59 @@ baasicDynamicResourceRouteService.find.expand({
 				* @example baasicDynamicResourceRouteService.parse('<route>/{?embed,fields,options}').expand({embed: '<embedded-resource>'});
 				**/					
                 parse: uriTemplateService.parse,					
-                permissions: {
+                acl: {
 					/**
-					* Parses get permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.					
-					* @method permissions.get       
+					* Parses get acl route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.					
+					* @method acl.get       
 					* @example 
-baasicDynamicResourceRouteService.permissions.get.expand({
+baasicDynamicResourceRouteService.acl.get.expand({
     id: '<dynamic-resource-id>', 
     schemaName: '<schema-name>'
 });               
 					**/ 				
-                    get: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
+                    get: uriTemplateService.parse("resources/{schemaName}/{id}/acl/{?fields}"),
 					/**
-					* Parses update permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.			
-					* @method permissions.update       
+					* Parses update acl route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.			
+					* @method acl.update       
 					* @example 
-baasicDynamicResourceRouteService.permissions.update.expand({
+baasicDynamicResourceRouteService.acl.update.expand({
     id: '<dynamic-resource-id>', 
     schemaName: '<schema-name>'
 });
 					**/ 					
-                    update: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
+                    update: uriTemplateService.parse("resources/{schemaName}/{id}/acl/{?fields}"),
 					/**
-					* Parses deleteByUser permissions route which can be expanded with additional options. Supported items are:
+					* Parses deleteByUser acl route which can be expanded with additional options. Supported items are:
 					* - `schemaName` - Name of the dynamic resource schema.
 					* - `id` - Id of the dynamic resource.
 					* - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified user and article resource.
 					* - `user` - A value which uniquely identifies user for which ACL policy needs to be removed.					
-					* @method permissions.deleteByUser       
+					* @method acl.deleteByUser       
 					* @example 
-baasicDynamicResourceRouteService.permissions.deleteByUser.expand({
+baasicDynamicResourceRouteService.acl.deleteByUser.expand({
     schemaName: '<schema-name>', 
     id: '<dynamic-resource-id>', 
     accessAction: '<access-action>', 
     user: '<username>'
 });
 					**/ 						
-                    deleteByUser: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/users/{user}/"),
+                    deleteByUser: uriTemplateService.parse("resources/{schemaName}/{id}/acl/actions/{accessAction}/users/{user}/"),
 					/**
-					* Parses deleteByRole permissions route which can be expanded with additional options. Supported items are:
+					* Parses deleteByRole acl route which can be expanded with additional options. Supported items are:
 					* - `schemaName` - Name of the dynamic resource schema.
 					* - `id` - Id of the dynamic resource.
 					* - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified role and article resource.
 					* - `role` - A value which uniquely identifies role for which ACL policy needs to be removed.					
-					* @method permissions.deleteByRole       
+					* @method acl.deleteByRole       
 					* @example 
-baasicDynamicResourceRouteService.permissions.deleteByRole.expand({
+baasicDynamicResourceRouteService.acl.deleteByRole.expand({
     schemaName: '<schema-name>', 
     id: '<dynamic-resource-id>', 
     accessAction: '<access-action>', 
     role: '<role-name>'
 });
 					**/ 					
-                    deleteByRole: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/roles/{role}/")
+                    deleteByRole: uriTemplateService.parse("resources/{schemaName}/{id}/acl/actions/{accessAction}/roles/{role}/")
                 }
             };
         }]);

@@ -73,59 +73,59 @@
                  * @example baasicDynamicResourceRouteService.parse('<route>/{?embed,fields,options}').expand({embed: '<embedded-resource>'});
                  **/
                 parse: uriTemplateService.parse,
-                permissions: {
+                acl: {
                     /**
-                     * Parses get permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.					
-                     * @method permissions.get       
+                     * Parses get acl route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.					
+                     * @method acl.get       
                      * @example 
-                     baasicDynamicResourceRouteService.permissions.get.expand({
+                     baasicDynamicResourceRouteService.acl.get.expand({
                      id: '<dynamic-resource-id>', 
                      schemaName: '<schema-name>'
                      });
                      **/
-                    get: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
+                    get: uriTemplateService.parse("resources/{schemaName}/{id}/acl/{?fields}"),
                     /**
-                     * Parses update permissions route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.			
-                     * @method permissions.update       
+                     * Parses update acl route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.			
+                     * @method acl.update       
                      * @example 
-                     baasicDynamicResourceRouteService.permissions.update.expand({
+                     baasicDynamicResourceRouteService.acl.update.expand({
                      id: '<dynamic-resource-id>', 
                      schemaName: '<schema-name>'
                      });
                      **/
-                    update: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/{?fields}"),
+                    update: uriTemplateService.parse("resources/{schemaName}/{id}/acl/{?fields}"),
                     /**
-                     * Parses deleteByUser permissions route which can be expanded with additional options. Supported items are:
+                     * Parses deleteByUser acl route which can be expanded with additional options. Supported items are:
                      * - `schemaName` - Name of the dynamic resource schema.
                      * - `id` - Id of the dynamic resource.
                      * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified user and article resource.
                      * - `user` - A value which uniquely identifies user for which ACL policy needs to be removed.					
-                     * @method permissions.deleteByUser       
+                     * @method acl.deleteByUser       
                      * @example 
-                     baasicDynamicResourceRouteService.permissions.deleteByUser.expand({
+                     baasicDynamicResourceRouteService.acl.deleteByUser.expand({
                      schemaName: '<schema-name>', 
                      id: '<dynamic-resource-id>', 
                      accessAction: '<access-action>', 
                      user: '<username>'
                      });
                      **/
-                    deleteByUser: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/users/{user}/"),
+                    deleteByUser: uriTemplateService.parse("resources/{schemaName}/{id}/acl/actions/{accessAction}/users/{user}/"),
                     /**
-                     * Parses deleteByRole permissions route which can be expanded with additional options. Supported items are:
+                     * Parses deleteByRole acl route which can be expanded with additional options. Supported items are:
                      * - `schemaName` - Name of the dynamic resource schema.
                      * - `id` - Id of the dynamic resource.
                      * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified role and article resource.
                      * - `role` - A value which uniquely identifies role for which ACL policy needs to be removed.					
-                     * @method permissions.deleteByRole       
+                     * @method acl.deleteByRole       
                      * @example 
-                     baasicDynamicResourceRouteService.permissions.deleteByRole.expand({
+                     baasicDynamicResourceRouteService.acl.deleteByRole.expand({
                      schemaName: '<schema-name>', 
                      id: '<dynamic-resource-id>', 
                      accessAction: '<access-action>', 
                      role: '<role-name>'
                      });
                      **/
-                    deleteByRole: uriTemplateService.parse("resources/{schemaName}/{id}/permissions/actions/{accessAction}/roles/{role}/")
+                    deleteByRole: uriTemplateService.parse("resources/{schemaName}/{id}/acl/actions/{accessAction}/roles/{role}/")
                 }
             };
         }]);
@@ -280,12 +280,12 @@
                  * @example baasicDynamicResourceService.routeService.get.expand(expandObject);
                  **/
                 routeService: dynamicResourceRouteService,
-                permissions: {
+                acl: {
                     /**
-                     * Returns a promise that is resolved once the get action has been performed. Success response returns a list of dynamic resource permissions.
-                     * @method permissions.get       
+                     * Returns a promise that is resolved once the get action has been performed. Success response returns a list of dynamic resource acl.
+                     * @method acl.get       
                      * @example 
-                     baasicDynamicResourceService.permissions.get({id: '<dynamic-resource-id>', schemaName: '<schema-name>'})
+                     baasicDynamicResourceService.acl.get({id: '<dynamic-resource-id>', schemaName: '<schema-name>'})
                      .success(function (data) {
                      // perform success action here
                      })
@@ -295,13 +295,13 @@
                      **/
                     get: function (options) {
                         var params = angular.extend({}, options);
-                        return baasicApiHttp.get(dynamicResourceRouteService.permissions.get.expand(params));
+                        return baasicApiHttp.get(dynamicResourceRouteService.acl.get.expand(params));
                     },
                     /**
-                     * Returns a promise that is resolved once the update permissions action has been performed; this action updates dynamic resource permissions.
-                     * @method permissions.update      
+                     * Returns a promise that is resolved once the update acl action has been performed; this action updates dynamic resource acl.
+                     * @method acl.update      
                      * @example 
-                     baasicDynamicResourceService.permissions.update({id: '<dynamic-resource-id>', schemaName: '<schema-name>'})
+                     baasicDynamicResourceService.acl.update({id: '<dynamic-resource-id>', schemaName: '<schema-name>'})
                      .success(function (data) {
                      // perform success action here
                      })
@@ -311,14 +311,14 @@
                      **/
                     update: function (options) {
                         var params = angular.extend({}, options);
-                        return baasicApiHttp.put(dynamicResourceRouteService.permissions.get.expand(params), params[baasicConstants.modelPropertyName]);
+                        return baasicApiHttp.put(dynamicResourceRouteService.acl.get.expand(params), params[baasicConstants.modelPropertyName]);
                     },
                     /**
                      * Returns a promise that is resolved once the removeByUser action has been performed. This action deletes ACL policy assigned to the specified user and dynamic resource.
-                     * @method permissions.update      
+                     * @method acl.update      
                      * @example 
                      // dynamicResource is a resource previously fetched using get action.
-                     baasicDynamicResourceService.permissions.removeByUser('<access-action>', '<username>', dynamicResource)
+                     baasicDynamicResourceService.acl.removeByUser('<access-action>', '<username>', dynamicResource)
                      .success(function (data) {
                      // perform success action here
                      })
@@ -330,14 +330,14 @@
                         var params = baasicApiService.removeParams(data);
                         params.user = user;
                         params.accessAction = action;
-                        return baasicApiHttp.delete(dynamicResourceRouteService.permissions.deleteByUser.expand(params));
+                        return baasicApiHttp.delete(dynamicResourceRouteService.acl.deleteByUser.expand(params));
                     },
                     /**
                      * Returns a promise that is resolved once the removeByRole action has been performed. This action deletes ACL policy assigned to the specified role and dynamic resource.
-                     * @method permissions.update      
+                     * @method acl.update      
                      * @example 
                      // dynamicResource is a resource previously fetched using get action.
-                     baasicDynamicResourceService.permissions.removeByRole('<access-action>', '<role-name>', dynamicResource)
+                     baasicDynamicResourceService.acl.removeByRole('<access-action>', '<role-name>', dynamicResource)
                      .success(function (data) {
                      // perform success action here
                      })
@@ -349,7 +349,7 @@
                         var params = baasicApiService.removeParams(data);
                         params.role = role;
                         params.accessAction = action;
-                        return baasicApiHttp.delete(dynamicResourceRouteService.permissions.deleteByRole.expand(params));
+                        return baasicApiHttp.delete(dynamicResourceRouteService.acl.deleteByRole.expand(params));
                     }
                 }
             };
