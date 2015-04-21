@@ -136,7 +136,7 @@ baasicDynamicResourceService.remove(dynamicResource)
                 routeService: dynamicResourceRouteService,
                 acl: {
                     /**
-                    * Returns a promise that is resolved once the get action has been performed. Success response returns a list of dynamic resource acl.
+                    * Returns a promise that is resolved once the get action has been performed. Success response returns a list of ACL policies established for the specified dynamic resource.
                     * @method acl.get       
                     * @example 
 baasicDynamicResourceService.acl.get({id: '<dynamic-resource-id>', schemaName: '<schema-name>'})
@@ -152,7 +152,7 @@ baasicDynamicResourceService.acl.get({id: '<dynamic-resource-id>', schemaName: '
                         return baasicApiHttp.get(dynamicResourceRouteService.acl.get.expand(params));
                     },
                     /**
-                    * Returns a promise that is resolved once the update acl action has been performed; this action updates dynamic resource acl.
+                    * Returns a promise that is resolved once the update acl action has been performed; this action creates new ACL policy for the specified dynamic resource.
                     * @method acl.update      
                     * @example 
 baasicDynamicResourceService.acl.update({id: '<dynamic-resource-id>', schemaName: '<schema-name>'})
@@ -169,7 +169,7 @@ baasicDynamicResourceService.acl.update({id: '<dynamic-resource-id>', schemaName
                     },
                     /**
                     * Returns a promise that is resolved once the removeByUser action has been performed. This action deletes ACL policy assigned to the specified user and dynamic resource.
-                    * @method acl.update      
+                    * @method acl.deleteByUser      
                     * @example 
 // dynamicResource is a resource previously fetched using get action.					
 baasicDynamicResourceService.acl.removeByUser('<access-action>', '<username>', dynamicResource)
@@ -188,7 +188,7 @@ baasicDynamicResourceService.acl.removeByUser('<access-action>', '<username>', d
                     },
                     /**
                     * Returns a promise that is resolved once the removeByRole action has been performed. This action deletes ACL policy assigned to the specified role and dynamic resource.
-                    * @method acl.update      
+                    * @method acl.deleteByRole      
                     * @example 
 // dynamicResource is a resource previously fetched using get action.						
 baasicDynamicResourceService.acl.removeByRole('<access-action>', '<role-name>', dynamicResource)
