@@ -16,14 +16,20 @@
 				* - `sort` - A string used to set the dynamic resource schema property to sort the result collection by.
 				* - `embed` - Comma separated list of resources to be contained within the current representation.
 				* @method      
-				* @example baasicDynamicSchemaRouteService.find.expand({searchQuery: '<search-phrase>'});               
+				* @example 
+baasicDynamicSchemaRouteService.find.expand(
+	{searchQuery: '<search-phrase>'}
+);               
 				**/ 			
                 find: uriTemplateService.parse("schemas/{?searchQuery,page,rpp,sort,embed,fields}"),
 				/**
-                * Parses get route which must be expanded with the dynamic resource schema name of the previously created resource in the system. Additional expand supported items are:
+                * Parses get route which must be expanded with name of the previously created dynamic resource schema. Additional expand supported items are:
 				* - `embed` - Comma separated list of resources to be contained within the current representation.
 				* @method      
-				* @example baasicDynamicSchemaRouteService.find.expand({name: '<schema-name>'});               
+				* @example 
+baasicDynamicSchemaRouteService.find.expand(
+	{name: '<schema-name>'}
+);               
 				**/ 					
                 get: uriTemplateService.parse("schemas/{name}/{?embed,fields}"),
 				/**
@@ -41,7 +47,12 @@
 				/**
 				* Parses and expands URI templates based on [RFC6570](http://tools.ietf.org/html/rfc6570) specifications. For more information please visit the project [GitHub](https://github.com/Baasic/uritemplate-js) page.
 				* @method
-				* @example baasicDynamicSchemaRouteService.parse('<route>/{?embed,fields,options}').expand({embed: '<embedded-resource>'});
+				* @example 
+baasicDynamicSchemaRouteService.parse(
+	'<route>/{?embed,fields,options}'
+).expand(
+	{embed: '<embedded-resource>'}
+);
 				**/					
                 parse: uriTemplateService.parse
             };
