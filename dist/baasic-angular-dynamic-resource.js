@@ -51,7 +51,7 @@
                  **/
                 find: uriTemplateService.parse("resources/{schemaName}/{?searchQuery,page,rpp,sort,embed,fields}"),
                 /**
-                 * Parses get route which must be expanded with the resource name of the previously created dynamic resource schema in the system and the Id of the previously created dynamic resource. Additional expand supported items are:
+                 * Parses get route which must be expanded with the name of the previously created dynamic resource schema in the system and the Id of the previously created dynamic resource. Additional expand supported items are:
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
                  * @example 
@@ -70,12 +70,17 @@
                 /**
                  * Parses and expands URI templates based on [RFC6570](http://tools.ietf.org/html/rfc6570) specifications. For more information please visit the project [GitHub](https://github.com/Baasic/uritemplate-js) page.
                  * @method
-                 * @example baasicDynamicResourceRouteService.parse('<route>/{?embed,fields,options}').expand({embed: '<embedded-resource>'});
+                 * @example 
+                 baasicDynamicResourceRouteService.parse(
+                 '<route>/{?embed,fields,options}'
+                 ).expand(
+                 {embed: '<embedded-resource>'}
+                 );
                  **/
                 parse: uriTemplateService.parse,
                 acl: {
                     /**
-                     * Parses get acl route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.					
+                     * Parses get acl route; this URI template should be expanded with the Id of the dynamic resource and name of the dynamic resource schema.					
                      * @method acl.get       
                      * @example 
                      baasicDynamicResourceRouteService.acl.get.expand({
@@ -85,7 +90,7 @@
                      **/
                     get: uriTemplateService.parse("resources/{schemaName}/{id}/acl/{?fields}"),
                     /**
-                     * Parses update acl route; this URI template should be expanded with the Id of the dynamic resource and the dynamic resource schema name.			
+                     * Parses update acl route; this URI template should be expanded with the Id of the dynamic resource and name of the dynamic resource schema.			
                      * @method acl.update       
                      * @example 
                      baasicDynamicResourceRouteService.acl.update.expand({
@@ -98,7 +103,7 @@
                      * Parses deleteByUser acl route which can be expanded with additional options. Supported items are:
                      * - `schemaName` - Name of the dynamic resource schema.
                      * - `id` - Id of the dynamic resource.
-                     * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified user and article resource.
+                     * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified user and dynamic resource item.
                      * - `user` - A value which uniquely identifies user for which ACL policy needs to be removed.					
                      * @method acl.deleteByUser       
                      * @example 
@@ -114,7 +119,7 @@
                      * Parses deleteByRole acl route which can be expanded with additional options. Supported items are:
                      * - `schemaName` - Name of the dynamic resource schema.
                      * - `id` - Id of the dynamic resource.
-                     * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified role and article resource.
+                     * - `accessAction` - Action abbreviation which identifies ACL policy assigned to the specified role and dynamic resource item.
                      * - `role` - A value which uniquely identifies role for which ACL policy needs to be removed.					
                      * @method acl.deleteByRole       
                      * @example 
@@ -382,14 +387,20 @@
                  * - `sort` - A string used to set the dynamic resource schema property to sort the result collection by.
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
-                 * @example baasicDynamicSchemaRouteService.find.expand({searchQuery: '<search-phrase>'});               
+                 * @example 
+                 baasicDynamicSchemaRouteService.find.expand(
+                 {searchQuery: '<search-phrase>'}
+                 );
                  **/
                 find: uriTemplateService.parse("schemas/{?searchQuery,page,rpp,sort,embed,fields}"),
                 /**
-                 * Parses get route which must be expanded with the dynamic resource schema name of the previously created resource in the system. Additional expand supported items are:
+                 * Parses get route which must be expanded with name of the previously created dynamic resource schema. Additional expand supported items are:
                  * - `embed` - Comma separated list of resources to be contained within the current representation.
                  * @method      
-                 * @example baasicDynamicSchemaRouteService.find.expand({name: '<schema-name>'});               
+                 * @example 
+                 baasicDynamicSchemaRouteService.find.expand(
+                 {name: '<schema-name>'}
+                 );
                  **/
                 get: uriTemplateService.parse("schemas/{name}/{?embed,fields}"),
                 /**
@@ -407,7 +418,12 @@
                 /**
                  * Parses and expands URI templates based on [RFC6570](http://tools.ietf.org/html/rfc6570) specifications. For more information please visit the project [GitHub](https://github.com/Baasic/uritemplate-js) page.
                  * @method
-                 * @example baasicDynamicSchemaRouteService.parse('<route>/{?embed,fields,options}').expand({embed: '<embedded-resource>'});
+                 * @example 
+                 baasicDynamicSchemaRouteService.parse(
+                 '<route>/{?embed,fields,options}'
+                 ).expand(
+                 {embed: '<embedded-resource>'}
+                 );
                  **/
                 parse: uriTemplateService.parse
             };
