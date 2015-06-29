@@ -1,9 +1,6 @@
 (function (angular, undefined) {
     /** 
      * @description The angular.module is a global place for creating, registering or retrieving modules. All modules should be registered in an application using this mechanism. An angular module is a container for the different parts of your app - services, directives etc. In order to use `baasic.dynamicResource` module functionality it must be added as a dependency to your app.
-     * @copyright (c) 2015 Mono
-     * @license MIT
-     * @author Mono
      * @module baasic.dynamicResource 
      * @example
      (function (Main) {
@@ -136,9 +133,6 @@
         }]);
     }(angular, module));
     /**
-     * @copyright (c) 2015 Mono
-     * @license MIT
-     * @author Mono
      * @overview 
      ***Notes:**
      - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
@@ -287,7 +281,7 @@
                 routeService: dynamicResourceRouteService,
                 acl: {
                     /**
-                     * Returns a promise that is resolved once the get action has been performed. Success response returns a list of dynamic resource acl.
+                     * Returns a promise that is resolved once the get action has been performed. Success response returns a list of ACL policies established for the specified dynamic resource.
                      * @method acl.get       
                      * @example 
                      baasicDynamicResourceService.acl.get({id: '<dynamic-resource-id>', schemaName: '<schema-name>'})
@@ -303,7 +297,7 @@
                         return baasicApiHttp.get(dynamicResourceRouteService.acl.get.expand(params));
                     },
                     /**
-                     * Returns a promise that is resolved once the update acl action has been performed; this action updates dynamic resource acl.
+                     * Returns a promise that is resolved once the update acl action has been performed; this action creates new ACL policy for the specified dynamic resource.
                      * @method acl.update      
                      * @example 
                      baasicDynamicResourceService.acl.update({id: '<dynamic-resource-id>', schemaName: '<schema-name>'})
@@ -320,7 +314,7 @@
                     },
                     /**
                      * Returns a promise that is resolved once the removeByUser action has been performed. This action deletes ACL policy assigned to the specified user and dynamic resource.
-                     * @method acl.update      
+                     * @method acl.deleteByUser      
                      * @example 
                      // dynamicResource is a resource previously fetched using get action.
                      baasicDynamicResourceService.acl.removeByUser('<access-action>', '<username>', dynamicResource)
@@ -339,7 +333,7 @@
                     },
                     /**
                      * Returns a promise that is resolved once the removeByRole action has been performed. This action deletes ACL policy assigned to the specified role and dynamic resource.
-                     * @method acl.update      
+                     * @method acl.deleteByRole      
                      * @example 
                      // dynamicResource is a resource previously fetched using get action.
                      baasicDynamicResourceService.acl.removeByRole('<access-action>', '<role-name>', dynamicResource)
@@ -361,9 +355,6 @@
         }]);
     }(angular, module));
     /**
-     * @copyright (c) 2015 Mono
-     * @license MIT
-     * @author Mono
      * @overview 
      ***Notes:**
      - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
@@ -430,9 +421,6 @@
         }]);
     }(angular, module));
     /**
-     * @copyright (c) 2015 Mono
-     * @license MIT
-     * @author Mono
      * @overview 
      ***Notes:**
      - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
@@ -587,9 +575,6 @@
         }]);
     }(angular, module));
     /**
-     * @copyright (c) 2015 Mono
-     * @license MIT
-     * @author Mono
      * @overview 
      ***Notes:**
      - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
