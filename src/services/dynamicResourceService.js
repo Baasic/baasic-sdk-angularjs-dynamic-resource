@@ -1,6 +1,6 @@
 ﻿/**
  * @module baasicDynamicResourceService
- * @description Baasic Dynamic Resource Service provides an easy way to consume Baasic Dynamic Resource REST API end-points. In order to obtain a needed routes `baasicDynamicResourceService` uses `baasicDynamicResourceRouteService`.
+ * @description Baasic Dynamic Resource Service provides an easy way to consume Baasic Dynamic Resource REST API end-points. In order to obtain needed routes `baasicDynamicResourceService` uses `baasicDynamicResourceRouteService`.
 */
 (function (angular, module, undefined) {
     "use strict";
