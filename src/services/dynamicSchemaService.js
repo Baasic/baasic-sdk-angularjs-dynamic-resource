@@ -1,6 +1,6 @@
 ﻿/**
  * @module baasicDynamicSchemaService
- * @description Baasic Dynamic Schema Service provides an easy way to consume Baasic Dynamic Schema REST API end-points. In order to obtain a needed routes `baasicDynamicSchemaService` uses `baasicDynamicSchemaRouteService`.
+ * @description Baasic Dynamic Schema Service provides an easy way to consume Baasic Dynamic Schema REST API end-points. In order to obtain needed routes `baasicDynamicSchemaService` uses `baasicDynamicSchemaRouteService`.
 */
 (function (angular, module, undefined) {
     "use strict";
@@ -147,9 +147,6 @@ baasicDynamicSchemaService.generate({
         }]);
 }(angular, module));
 /**
- * @copyright (c) 2015 Mono
- * @license MIT
- * @author Mono
  * @overview 
  ***Notes:**
  - Refer to the [REST API documentation](https://github.com/Baasic/baasic-rest-api/wiki) for detailed information about available Baasic REST API end-points.
