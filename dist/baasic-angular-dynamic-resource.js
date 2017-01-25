@@ -1,6 +1,6 @@
 /*
- Baasic AngularJS Dynamic Resource v0.9.0
- (c) 2014-2016 Mono http://baasic.com
+ Baasic AngularJS Dynamic Resource v1.0.1
+ (c) 2014-2017 Mono Ltd.  http://baasic.com
  License: MIT
 */
 (function (angular, undefined) {
@@ -222,7 +222,9 @@
                  * @example 
                  // dynamicResource is a resource previously fetched using get action.
                  dynamicResource.description = '<description>';
-                 baasicDynamicResourceService.update(dynamicResource)
+                 baasicDynamicResourceService.update(dynamicResource, {
+                 query: "where field = 'value' "
+                 })
                  .success(function (data) {
                  // perform success action here
                  })
@@ -230,9 +232,10 @@
                  // perform error handling here
                  });
                  **/
-                update: function (data) {
+                update: function (data, options) {
                     var params = baasicApiService.updateParams(data);
-                    return baasicApiHttp.put(params[baasicConstants.modelPropertyName].links('put').href, params[baasicConstants.modelPropertyName]);
+                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('put').href).expand(options);
+                    return baasicApiHttp.put(url, params[baasicConstants.modelPropertyName]);
                 },
                 /**
                  * Returns a promise that is resolved once the patch action has been performed; this action patches an existing dynamic resource. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicDynamicResourceRouteService` route template. Here is an example of how a route can be obtained from HAL enabled objects:
@@ -245,7 +248,9 @@
                  // dynamicResource is a resource previously fetched using get action.
                  dynamicResource.description = '<new-description>';
                  dynamicResource.newField = '<newfield-value>';
-                 baasicDynamicResourceService.update(dynamicResource)
+                 baasicDynamicResourceService.update(dynamicResource, {
+                 query: "where field = 'value' "
+                 })
                  .success(function (data) {
                  // perform success action here
                  })
@@ -253,9 +258,10 @@
                  // perform error handling here
                  });
                  **/
-                patch: function (data) {
+                patch: function (data, options) {
                     var params = baasicApiService.updateParams(data);
-                    return baasicApiHttp.patch(params[baasicConstants.modelPropertyName].links('patch').href, params[baasicConstants.modelPropertyName]);
+                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('patch').href).expand(options);
+                    return baasicApiHttp.patch(url, params[baasicConstants.modelPropertyName]);
                 },
                 /**
                  * Returns a promise that is resolved once the remove action has been performed. This action will remove a dynamic resource from the system if successfully completed. This route uses HAL enabled objects to obtain routes and therefore it doesn't apply `baasicDynamicResourceRouteService` route template. Here is an example of how a route can be obtained from HAL enabled objects:
@@ -266,7 +272,9 @@
                  * @method        
                  * @example 
                  // dynamicResource is a resource previously fetched using get action.
-                 baasicDynamicResourceService.remove(dynamicResource)
+                 baasicDynamicResourceService.remove(dynamicResource, {
+                 query: "where field = 'value' "
+                 })
                  .success(function (data) {
                  // perform success action here
                  })
@@ -274,9 +282,10 @@
                  // perform error handling here
                  });
                  **/
-                remove: function (data) {
+                remove: function (data, options) {
                     var params = baasicApiService.removeParams(data);
-                    return baasicApiHttp.delete(params[baasicConstants.modelPropertyName].links('delete').href);
+                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('delete').href).expand(options);
+                    return baasicApiHttp.delete(url);
                 },
                 /**
                  * Provides direct access to `baasicDynamicResourceRouteService`.
