@@ -83,8 +83,9 @@ baasicDynamicResourceService.update(dynamicResource, {
 });
 				**/						
                 update: function (data, options) {
+                    var opt = angular.extend({}, options);
                     var params = baasicApiService.updateParams(data);
-                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('put').href).expand(options);
+                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('put').href).expand(opt);
                     return baasicApiHttp.put(url, params[baasicConstants.modelPropertyName]);
                 },
                  /**
@@ -109,8 +110,9 @@ baasicDynamicResourceService.update(dynamicResource, {
 });
 				**/				
                 patch: function (data, options) {
+                    var opt = angular.extend({}, options);
                     var params = baasicApiService.updateParams(data);
-                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('patch').href).expand(options);
+                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('patch').href).expand(opt);
                     return baasicApiHttp.patch(url, params[baasicConstants.modelPropertyName]);
                 },
                  /**
@@ -133,8 +135,9 @@ baasicDynamicResourceService.remove(dynamicResource, {
 });		
 				**/					
                 remove: function (data, options) {
+                    var opt = angular.extend({}, options);
                     var params = baasicApiService.removeParams(data);
-                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('delete').href).expand(options);
+                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('delete').href).expand(opt);
                     return baasicApiHttp.delete(url);
                 },
                 /**

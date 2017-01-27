@@ -1,5 +1,5 @@
 /*
- Baasic AngularJS Dynamic Resource v1.0.1
+ Baasic AngularJS Dynamic Resource v1.0.2
  (c) 2014-2017 Mono Ltd.  http://baasic.com
  License: MIT
 */
@@ -233,8 +233,9 @@
                  });
                  **/
                 update: function (data, options) {
+                    var opt = angular.extend({}, options);
                     var params = baasicApiService.updateParams(data);
-                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('put').href).expand(options);
+                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('put').href).expand(opt);
                     return baasicApiHttp.put(url, params[baasicConstants.modelPropertyName]);
                 },
                 /**
@@ -259,8 +260,9 @@
                  });
                  **/
                 patch: function (data, options) {
+                    var opt = angular.extend({}, options);
                     var params = baasicApiService.updateParams(data);
-                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('patch').href).expand(options);
+                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('patch').href).expand(opt);
                     return baasicApiHttp.patch(url, params[baasicConstants.modelPropertyName]);
                 },
                 /**
@@ -283,8 +285,9 @@
                  });
                  **/
                 remove: function (data, options) {
+                    var opt = angular.extend({}, options);
                     var params = baasicApiService.removeParams(data);
-                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('delete').href).expand(options);
+                    var url = dynamicResourceRouteService.parse(params[baasicConstants.modelPropertyName].links('delete').href).expand(opt);
                     return baasicApiHttp.delete(url);
                 },
                 /**
